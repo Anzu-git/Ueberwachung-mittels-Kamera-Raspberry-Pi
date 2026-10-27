@@ -11,7 +11,9 @@ Attentio erkennt in Echtzeit, ob sich Personen in einem überwachten Bereich auf
 Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompatibel mit verschiedenen Kamerasystemen und bestehenden Lösungen. Somit ist unser Produkt eine kostengünstige Lösung dieser Problematik. Mittels Attentio Kameraüberwachung wird die Abdeckung des Sicherheitskritischen Beriches erweitert und die Integrität geschützter Systeme zusätzlich unterstützt.
 
 #### Fähigkeiten:
-1. Personenerkennung ohne Gesichtserkennung (aus Datenschutzrechtlichen Gründen)
-2. Datenbankdokumentation über Middleware (OPCUA)
-3. Dashboardübersicht mittels Node-Red
-4. Live-Feed der Kamera einsehen
+| Kennung und erstes Feature | Was soll damit möglich sein? | Beitrag zum Produktziel |
+|---|---|---|
+| **F1** |  Personenerkennung ohne Gesichtserkennung (aus Datenschutzrechtlichen Gründen) | Grundlegende Funktionalität |
+| **F2** | Datenbankdokumentation über Middleware (OPCUA) | Dokumentation & Systemintegration |
+| **F3** | Dashboardübersicht mittels Node-Red | Überwachung & Übersichtlichkeit |
+| **F4** | Live-Feed der Kamera einsehen | Usability & User Interface |
