@@ -17,3 +17,12 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 | **F2** | Datenbankdokumentation über Middleware (OPCUA) | Dokumentation & Systemintegration |
 | **F3** | Dashboardübersicht mittels Node-Red | Überwachung & Übersichtlichkeit |
 | **F4** | Live-Feed der Kamera einsehen | Usability & User Interface |
+
+# Materialbedarf
+| Gruppe | Projekt/Thema | Komponente | Anzahl |
+|---|---|---|
+| Raspberry Pi 5 Model B Rev 1.1 Broadcom BCM2712, 4 × Arm Cortex-A76 mit 2,4 GHz, 8 GB LPDDR4X, Gigabit-Ethernet |
+| Raspberry Pi AI HAT+ (Hailo-8L) | 13 TOPS INT8 KI-Beschleuniger, PCIe über den FFC-Anschluss des Pi 5, Gerät-/Hailo: ≈ 41 °C unter Last |
+| Speicher | microSD-Karte, ≈ 119 GB | Betriebssystem, Docker (Tracker-Image ≈ 10 GB) |
+| Kamera |  | Liefert den Kamerastream |
+| Raspberry Pi mit Kamerasensor (geplant) | Raspberry Pi mit Kamerasensor, Hardware-H.264-Encoder, Tailscale | Künftige Kamera und Datenbank für die Metadaten |
