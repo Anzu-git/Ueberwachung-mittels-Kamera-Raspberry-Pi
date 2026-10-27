@@ -19,7 +19,7 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 | **F4** | Live-Feed der Kamera einsehen | Usability & User Interface |
 
 # Materialbedarf
-| Komponente | Anzahl | Bereits vorhanden |
+| Komponente | Benötigt | Vorhanden |
 |---|---|---|
 | Raspberry Pi | 2x |  1x |
 | Raspberry Pi AI HAT+ (Hailo-8L) | 1x | 1x |
