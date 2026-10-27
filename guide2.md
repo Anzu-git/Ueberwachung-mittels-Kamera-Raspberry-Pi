@@ -6,3 +6,12 @@ Antwort: Ziel des Produktes sind Unternehmen in der Sicherheitsbranche die ihr S
 Attentio erkennt in Echtzeit, ob sich Personen in einem überwachten Bereich aufhalten – ob Serverraum, Lager, Labor, Baustelle oder Zufahrt. Die KI-Auswertung läuft lokal auf kompakter Edge-Hardware: Videobilder werden nur im Arbeitsspeicher verarbeitet, nicht aufgezeichnet, und es werden keine Personen identifiziert, sondern ausschließlich anonyme Metadaten wie Anzahl, Zeitpunkt und Kamerastatus erfasst. Über die Industrie-Standardschnittstelle OPC UA lassen sich diese Daten direkt in Datenbanken, Leitstände und bestehende Sicherheits- oder Gebäudeleitsysteme einbinden. So wird jeder Zutritt protokolliert, mit Berechtigungen abgeglichen und auf einem Dashboard sichtbar – inklusive Überwachung, ob die Kamera selbst funktioniert. Attentio macht Zutrittsüberwachung datenschutzfreundlich, kostengünstig und überall nachrüstbar.
 ### Skizze
 <img width="2500" height="1514" alt="image" src="https://github.com/user-attachments/assets/8e7d5844-eada-4157-840f-f2e6394aeec2" />
+
+### Was soll unser Produkt ermöglichen?
+Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompatibel mit verschiedenen Kamerasystemen und bestehenden Lösungen. Somit ist unser Produkt eine kostengünstige Lösung dieser Problematik. Mittels Attentio Kameraüberwachung wird die Abdeckung des Sicherheitskritischen Beriches erweitert und die Integrität geschützter Systeme zusätzlich unterstützt.
+
+#### Fähigkeiten:
+1. Personenerkennung ohne Gesichtserkennung (aus Datenschutzrechtlichen Gründen)
+2. Datenbankdokumentation über Middleware (OPCUA)
+3. Dashboardübersicht mittels Node-Red
+4. Live-Feed der Kamera einsehen
