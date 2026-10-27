@@ -21,7 +21,7 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 # Materialbedarf
 | Komponente | Anzahl | Bereits vorhanden |
 |---|---|---|
-| Raspberry Pi | 2x |  1x vorhanden |
-| Raspberry Pi AI HAT+ (Hailo-8L) | 1x | 1x vorhanden |
-| microSD-Karte | 2x | 1x vorhanden |
-| Kamera Sensor | 1x | 0x vorhanden |
+| Raspberry Pi | 2x |  1x |
+| Raspberry Pi AI HAT+ (Hailo-8L) | 1x | 1x |
+| microSD-Karte | 2x | 1x |
+| Kamera Sensor | 1x | 0x |
