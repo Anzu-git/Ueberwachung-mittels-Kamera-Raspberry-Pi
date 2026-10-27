@@ -1,0 +1,11 @@
+# OPC UA server for the people-tracking snapshot. Deliberately separate from
+# the ~10GB tracker image: it only needs asyncua, builds in about a minute,
+# and keeps serving clients while the tracker restarts. Code is bind-mounted
+# (./opcua), so edits need a restart, not a rebuild.
+FROM python:3.13-slim
+
+WORKDIR /opcua
+COPY opcua/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["python", "-u", "server.py"]

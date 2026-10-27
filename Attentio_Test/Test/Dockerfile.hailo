@@ -1,0 +1,48 @@
+# Separate image for the Hailo backend, not a variant of the main Dockerfile.
+#
+# python3-hailort is an apt package that ships compiled C-extension bindings
+# tied to a specific CPython ABI — the host runs Debian 13 trixie / Python
+# 3.13, but the main Dockerfile is python:3.12-slim, and there is no
+# python:3.13-slim rebuild of that base that also carries Raspberry Pi's apt
+# repo. Building on debian:trixie-slim directly matches the host's Python
+# exactly and lets `apt-get install python3-hailort` just work, at the cost
+# of building ultralytics/opencv's dependencies from Debian's own apt instead
+# of python:slim's usual pip wheels.
+#
+# hailort/python3-hailort versions are pinned to what was actually available
+# via `apt-cache madison` on this host on 2026-09-23; bump deliberately, not
+# by dropping the pin, since an unpinned hailort/python3-hailort mismatch
+# fails at runtime, not at build time.
+FROM debian:trixie-slim
+
+COPY docker/raspberrypi-archive-keyring.pgp /usr/share/keyrings/raspberrypi-archive-keyring.pgp
+
+RUN echo "Types: deb\n\
+URIs: http://archive.raspberrypi.com/debian/\n\
+Suites: trixie\n\
+Components: main\n\
+Signed-By: /usr/share/keyrings/raspberrypi-archive-keyring.pgp" \
+    > /etc/apt/sources.list.d/raspi.sources
+
+# libgl1/libglib2.0-0: same opencv-python shared-lib deps as the main
+# Dockerfile. ffmpeg: RTSP output, same reason as the main Dockerfile.
+# python3-pip's Debian package is used instead of get-pip.py so it matches
+# the distro's Python 3.13 build exactly.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip libgl1 libglib2.0-0 ffmpeg \
+    hailort=4.23.0 python3-hailort=4.23.0-1 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+# --break-system-packages: Debian's externally-managed-environment guard
+# blocks pip outside a venv by default. A venv is skipped deliberately here
+# so this container's Python keeps using the apt-installed hailo_platform
+# bindings, which only exist in the system site-packages — a venv would
+# need to be built with --system-site-packages anyway, which is no safer
+# and adds a layer of indirection for no benefit in a container that only
+# ever runs this one thing.
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
+
+CMD ["python3", "track.py"]

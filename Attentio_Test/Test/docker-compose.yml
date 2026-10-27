@@ -1,0 +1,126 @@
+# Attentio — Analyse-Knoten (Raspberry Pi 5 + Hailo-8L AI HAT+)
+#
+# Erwartet eine .env-Datei neben dieser Datei (Vorlage: .env.example):
+#   BIND_IP       Adresse, an die MediaMTX und OPC UA binden (z. B. die Tailscale-IP)
+#   TRACKER_PASS  Passwort des MediaMTX-Benutzers "tracker" (muss zu mediamtx.yml passen)
+#
+# Log rotation is set on every service because this runs on a Pi with limited
+# storage and the live tracker logs a line whenever it retries a disconnected
+# source; without a cap those logs grow into the tens of megabytes while idle.
+x-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+# Shared by both tracker services. The tracker is capped rather than left to
+# compete freely: a runaway here gets throttled or OOM-killed inside its own
+# container instead of starving the rest of the host.
+x-tracker-limits: &tracker-limits
+  cpus: "3.0"
+  mem_limit: 2g
+  memswap_limit: 2g
+
+services:
+  # RTSP hub. Everything enters and leaves the pipeline through here:
+  # the camera publishes to /source, the tracker publishes to /annotated.
+  mediamtx:
+    image: bluenviron/mediamtx:1.21.0
+    container_name: camera-tracker-mediamtx
+    volumes:
+      - ./mediamtx.yml:/mediamtx.yml:ro
+    ports:
+      # Bound to one address (e.g. the Tailscale IP) rather than 0.0.0.0, so
+      # the hub is only reachable from that network.
+      - "${BIND_IP}:8554:8554"
+    mem_limit: 256m
+    cpus: "1.0"
+    restart: unless-stopped
+    logging: *default-logging
+
+  # Live mode: reads the camera feed from /source, runs person detection on
+  # the Hailo-8L plus ByteTrack, republishes to /annotated.
+  tracker-live-hailo:
+    build:
+      context: .
+      dockerfile: Dockerfile.hailo
+    # Shared with the batch service below so the image is built once.
+    image: camera-tracker-hailo:latest
+    container_name: camera-tracker-live-hailo
+    volumes:
+      - ./app:/app
+      - tracker-state:/run/tracker-state
+    devices:
+      - /dev/hailo0:/dev/hailo0
+    command:
+      - python3
+      - track.py
+      - rtsp://tracker:${TRACKER_PASS}@mediamtx:8554/source
+      - rtsp://tracker:${TRACKER_PASS}@mediamtx:8554/annotated
+      - --hef=/app/model.hef
+      - --height=420
+      - --fps=12
+      - --state-file=/run/tracker-state/people.json
+      # Also available, benchmarked but off (README "Erkennungsoptionen"):
+      # --tiles=2, --nms-iou=0.7, --hef=/app/yolov8s_h8l.hef
+    <<: *tracker-limits
+    restart: unless-stopped
+    logging: *default-logging
+    depends_on:
+      - mediamtx
+
+  # OPC UA server: serves the current person count, camera status and
+  # snapshot timestamp, updated once a second from the tracker's snapshot.
+  #
+  # Host networking so it can bind BIND_IP directly: OPC UA clients reconnect
+  # to the endpoint URL the server advertises, and a port-mapped container
+  # would advertise an address clients can't reach. If the address isn't up
+  # yet at boot, the bind fails and the restart policy retries.
+  opcua:
+    build:
+      context: .
+      dockerfile: Dockerfile.opcua
+    image: camera-tracker-opcua:latest
+    container_name: camera-tracker-opcua
+    network_mode: host
+    volumes:
+      - ./opcua:/opcua:ro
+      - tracker-state:/run/tracker-state:ro
+    environment:
+      OPCUA_ENDPOINT: opc.tcp://${BIND_IP}:4840/camera-tracker/
+    mem_limit: 256m
+    cpus: "0.5"
+    restart: unless-stopped
+    logging: *default-logging
+
+  # Batch mode: process a video file and exit. Not started by `up`. HailoRT
+  # won't share the device between two processes without its multi-process
+  # service, so stop tracker-live-hailo first. Invoke with explicit arguments:
+  #   docker compose run --rm tracker python3 track.py \
+  #     /data/testdata/clip.mp4 /data/output/annotated.mp4 --height=420 --fps=12
+  # The default command only prints usage, so starting this by accident is
+  # harmless rather than a crash on a missing file.
+  tracker:
+    image: camera-tracker-hailo:latest
+    container_name: camera-tracker
+    profiles: ["batch"]
+    volumes:
+      - ./app:/app
+      - ./testdata:/data/testdata:ro
+      - ./output:/data/output
+    devices:
+      - /dev/hailo0:/dev/hailo0
+    command: ["python3", "track.py", "--help"]
+    <<: *tracker-limits
+    restart: "no"
+    logging: *default-logging
+
+volumes:
+  # In memory: the tracker rewrites its snapshot twice a second, which would
+  # otherwise be ~170k writes a day to the SD card.
+  tracker-state:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: size=1m

@@ -1,0 +1,21 @@
+# Based on ultralytics' bundled bytetrack.yaml defaults, with track_buffer
+# raised from 30 to 90. We only run tracking on every Nth decoded frame (see
+# --fps subsampling in track.py), so "30 tracker frames" of occlusion
+# tolerance is really 30 * step real frames — bumping this keeps a person
+# who's briefly occluded or steps out of frame from getting a new ID when
+# input is heavily subsampled.
+#
+# Thresholds: a detection needs 0.5 to start a new track or take part in the
+# first matching pass (the bar the detector alone used to apply). Weaker ones,
+# down to track_low_thresh, are only used in ByteTrack's second pass to keep
+# existing tracks alive — typically a partly occluded person whose score dips.
+# The detector's cut-off is set from track_low_thresh (see track.py main()),
+# and the HEF's own NMS already drops everything below 0.2, so going lower
+# here has no effect.
+tracker_type: bytetrack
+track_high_thresh: 0.5
+track_low_thresh: 0.2
+new_track_thresh: 0.5
+track_buffer: 90
+match_thresh: 0.8
+fuse_score: True

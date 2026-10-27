@@ -1,0 +1,61 @@
+# MediaMTX configuration for Attentio.
+# Only RTSP is enabled — RTMP/HLS/WebRTC/SRT aren't needed for this pipeline,
+# and leaving them off shrinks the port/attack surface. rtspTransports is
+# locked to [tcp] so RTSP control + media both ride the single 8554 port.
+
+logLevel: info
+
+rtsp: true
+rtspAddress: :8554
+rtspTransports: [tcp]
+rtspEncryption: "no"
+
+rtmp: false
+hls: false
+webrtc: false
+srt: false
+moq: false
+
+api: false
+metrics: false
+pprof: false
+playback: false
+
+# Replace both CHANGE_ME values with your own random passwords
+# (e.g. `openssl rand -hex 16`). MediaMTX doesn't substitute environment
+# variables here, so they are written literally. The `tracker` password must
+# match TRACKER_PASS in .env. Never commit the real values.
+authMethod: internal
+authInternalUsers:
+  # The camera source authenticates to publish only to "source".
+  - user: publisher
+    pass: CHANGE_ME_PUBLISHER
+    ips: []
+    permissions:
+      - action: publish
+        path: source
+
+  # The tracker container authenticates to publish only the annotated
+  # result. Kept separate from the source-publish credential so a leaked
+  # source credential can't overwrite the annotated stream.
+  - user: tracker
+    pass: CHANGE_ME_TRACKER
+    ips: []
+    permissions:
+      - action: publish
+        path: annotated
+      - action: read
+        path: source
+
+  # Read-only, unauthenticated: anyone on the (private) network can view
+  # either stream with a bare RTSP URL in VLC/ffplay. Publishing is gated above.
+  - user: any
+    pass:
+    ips: []
+    permissions:
+      - action: read
+        path:
+
+paths:
+  source:
+  annotated:
