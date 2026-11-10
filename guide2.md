@@ -40,7 +40,7 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 | **Sicherheitspersonal (Nutzer)** | Übersichtliche Darstellung mittels Signalfarben bei Erkennung einer Person sowie Priorisierung von Kameras mit Live-Personenerkennung gegenüber Kameras ohne erkannte Person | Wie soll ein Alarm aussehen (Signalfarbe, Ton, Push-Nachricht)? |
 
 ## Stakeholderanalyse:
-<img width="641" height="443" alt="image" src="https://github.com/user-attachments/assets/eab4b14d-d4b6-49b2-8356-7a8656966a86" />
+<img width="942" height="541" alt="image" src="https://github.com/user-attachments/assets/2b24dd5a-8788-4d57-b23b-e299e4a21055" />
 
 # Personas
 - Markus Becker (Wachmann)
