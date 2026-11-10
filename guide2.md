@@ -50,4 +50,4 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 | Datenbankdokumentation über Middleware | IT-Administratorin Sarah Klein (Mangelnde Dokumentation) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
 | Dashboardübersicht mittels Node-Red | IT-Administratorin Sarah Klein (Übersichtlichkeit), Wachmann Markus Becker (Auf einen Blick wichtiges erkennen) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
 | Live-Feed der Kamera einsehen | Wachmann Markus Becker (damit Reaktionszeit bei potentiellem Alarm geringer ist) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
-| Einfaches Setup des Add-Ons & Kompatibilität | Sicherheitstechniker Thomas Wagner (Einfache Konfiguration), Geschäftsführer (Kein zusätzlicher Aufwand für Mitarbeiter) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
+| Einfaches Setup des Add-Ons & Kompatibilität | Sicherheitstechniker Thomas Wagner (Einfache Konfiguration), Geschäftsführer (Kein zusätzlicher Aufwand für Mitarbeiter) | ✔️ behalten bzw. wurde hinzugefügt ☐ ändern ☐ teilen ☐ streichen |
