@@ -8,6 +8,3 @@
 | Aufrufbares & Funktionsfähiges Dashboard mit integrierten Kameras | Prüfung durch Projektmitglieder |
 | Sauberes Logging | Kontrolle durch Testlogging |
 | Datenbank ist konfiguriert & erreichbar | Überprüfung der Datentypen & Datenbankaufbau |
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
-Keine Datei ausgewählt
-Attach files by dragging & dropping, selecting or pasting them.
