@@ -40,7 +40,7 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 | **Kamerahersteller** | Ihre Kameras sollen mit möglichst vielen Systemen kompatibel sein | Unterstützen ihre Kameras H.264-Streaming per RTSP? |
 | **Sicherheitspersonal (Nutzer)** | Übersichtliche Darstellung mittels Signalfarben bei Erkennung einer Person sowie Priorisierung von Kameras mit Live-Personenerkennung gegenüber Kameras ohne erkannte Person | Wie soll ein Alarm aussehen (Signalfarbe, Ton, Push-Nachricht)? |
 
-# Stakeholderanalyse:
+## Stakeholderanalyse:
 <img width="641" height="443" alt="image" src="https://github.com/user-attachments/assets/eab4b14d-d4b6-49b2-8356-7a8656966a86" />
 
 # Features aus Nutzersicht überprüfen:
