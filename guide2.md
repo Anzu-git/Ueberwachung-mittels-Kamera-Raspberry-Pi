@@ -65,7 +65,7 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 
 **US-1.1:** Als IT-Administratorin Sarah Klein möchte ich, dass das System Personen erkennt, ohne Gesichtsmerkmale zu verarbeiten, damit meine Datenschutzbedenken ausgeräumt sind.
 
-- Die Erkennung arbeitet ausschließlich mit Personenumrissen oder Bewegungsmerkmalen, nicht mit Gesichtsmerkmalen.
+- Die Erkennung arbeitet ausschließlich mit Personenumrissen, nicht mit Gesichtsmerkmalen.
 - Es werden keine Gesichtsvektoren, Templates oder Gesichtsausschnitte gespeichert.
 - Die Verarbeitung ist in der Dokumentation nachvollziehbar beschrieben.
 
@@ -92,7 +92,7 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 
 **US-3.2:** Als Wachmann Markus Becker möchte ich wichtige Ereignisse auf einen Blick erkennen, damit ich nicht erst durch Details suchen muss.
 
-- Kritische Ereignisse sind durch Farbe und Symbol hervorgehoben, nicht nur durch Farbe.
+- Kritische Ereignisse sind durch Farbe und Symbol hervorgehoben.
 - Ereignisse sind nach Priorität und Zeitpunkt sortiert.
 - Neue Alarme sind sofort sichtbar, ohne dass das Dashboard neu geladen werden muss.
 
@@ -101,14 +101,14 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 **US-4.1:** Als Wachmann Markus Becker möchte ich den Live-Feed einer Kamera direkt aus dem Dashboard oder einer Alarmmeldung öffnen, damit ich bei einem potenziellen Alarm schneller reagieren kann.
 
 - Der Live-Feed ist mit höchstens einem Klick aus einer Alarmmeldung erreichbar.
-- Das Video startet innerhalb von etwa 3 Sekunden.
+- Das Video startet innerhalb von etwa 15 Sekunden.
 - Die Verzögerung zwischen Realität und Anzeige ist gering genug, um eine Situation sinnvoll zu beurteilen.
 
 ## 5. Einfaches Setup des Add-Ons & Kompatibilität
 
 **US-5.1:** Als Sicherheitstechniker Thomas Wagner möchte ich das Add-On einfach konfigurieren können, damit die Inbetriebnahme schnell und fehlerfrei gelingt.
 
-- Ein geführter Setup-Assistent führt Schritt für Schritt durch die Konfiguration.
+- Der Zugriff und Konfiguration ist über eine Weboberfläche ermöglicht.
 - Sinnvolle Standardwerte sind bereits vorbelegt.
 - Vor dem Abschluss prüft das System die Kompatibilität mit den vorhandenen Kameras und Systemen und meldet Probleme verständlich.
 
