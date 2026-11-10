@@ -35,7 +35,6 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 | **Projektteam** | Funktionierende, gut dokumentierte Lösung mit wenig Wartungsaufwand | Bis wann stehen der Pi mit Kamerasensor und die Datenbank bereit, und wer übernimmt welche Aufgabe? |
 | **Sicherheitstechniker** | Verwaltung der Sicherheitssysteme, Konfiguration & Nutzung dieser | Zugriff auf die Datenbank, das Dashboard usw.? |
 | **Geschäftsführer** | Kostengünstig, kein zusätzlicher Aufwand | Welches Budget steht für Hardware und Betrieb zur Verfügung? |
-| **Kunde** | Zuverlässiger Schutz des Areals und einfache Bedienung | Was erwarten Sie konkret von der Bedienung des Dashboards? |
 | **Wartungspersonal** | Sind befugt, das Areal zu betreten. Ungehinderter Zutritt während der Wartung und keine Speicherung von Gesichtern | Wie sollen sie über die Überwachung informiert werden, und wie werden ihre Wartungszeiten als befugter Zutritt erfasst? |
 | **Kamerahersteller** | Ihre Kameras sollen mit möglichst vielen Systemen kompatibel sein | Unterstützen ihre Kameras H.264-Streaming per RTSP? |
 | **Sicherheitspersonal (Nutzer)** | Übersichtliche Darstellung mittels Signalfarben bei Erkennung einer Person sowie Priorisierung von Kameras mit Live-Personenerkennung gegenüber Kameras ohne erkannte Person | Wie soll ein Alarm aussehen (Signalfarbe, Ton, Push-Nachricht)? |
