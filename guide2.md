@@ -25,3 +25,19 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 | Raspberry Pi AI HAT+ (Hailo-8L) | 1x | 1x |
 | microSD-Karte | 2x | 1x |
 | Kamera Sensor | 1x | 0x |
+
+
+# Stakeholder
+| Stakeholder | Interesse oder Bedürfnis | Das wollen wir mit ihnen klären |
+|---|---|---|
+| **IT-Administrator** | Dokumentation, Open Source, Vorgehen/Verhalten des Systems bei Updates (→ Logging & Dashboard laufen weiter, Live-Kamera temporär pausiert), Mini-Dashboard für den Status der Kameras (live, off, nicht funktionsfähig) | Wie sollen Updates eingespielt werden, und wer wird benachrichtigt, wenn eine Kamera ausfällt? |
+| **Projektteam** | Funktionierende, gut dokumentierte Lösung mit wenig Wartungsaufwand | Bis wann stehen der Pi mit Kamerasensor und die Datenbank bereit, und wer übernimmt welche Aufgabe? |
+| **Sicherheitstechniker** | Verwaltung der Sicherheitssysteme, Konfiguration & Nutzung dieser | Zugriff auf die Datenbank, das Dashboard usw.? |
+| **Geschäftsführer** | Kostengünstig, kein zusätzlicher Aufwand | Welches Budget steht für Hardware und Betrieb zur Verfügung? |
+| **Kunde** | Zuverlässiger Schutz des Areals und einfache Bedienung | Was erwarten Sie konkret von der Bedienung des Dashboards? |
+| **Wartungspersonal** | Sind befugt, das Areal zu betreten. Ungehinderter Zutritt während der Wartung und keine Speicherung von Gesichtern | Wie sollen sie über die Überwachung informiert werden, und wie werden ihre Wartungszeiten als befugter Zutritt erfasst? |
+| **Kamerahersteller** | Ihre Kameras sollen mit möglichst vielen Systemen kompatibel sein | Unterstützen ihre Kameras H.264-Streaming per RTSP? |
+| **Sicherheitspersonal (Nutzer)** | Übersichtliche Darstellung mittels Signalfarben bei Erkennung einer Person sowie Priorisierung von Kameras mit Live-Personenerkennung gegenüber Kameras ohne erkannte Person | Wie soll ein Alarm aussehen (Signalfarbe, Ton, Push-Nachricht)? |
+
+# Stakeholderanalyse:
+<img width="641" height="443" alt="image" src="https://github.com/user-attachments/assets/eab4b14d-d4b6-49b2-8356-7a8656966a86" />
