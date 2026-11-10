@@ -8,3 +8,4 @@
 | Aufrufbares & Funktionsfähiges Dashboard mit integrierten Kameras | Prüfung durch Projektmitglieder |
 | Sauberes Logging | Kontrolle durch Testlogging |
 | Datenbank ist konfiguriert & erreichbar | Überprüfung der Datentypen & Datenbankaufbau |
+
