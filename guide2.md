@@ -13,10 +13,11 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 #### Fähigkeiten:
 | Kennung und erstes Feature | Was soll damit möglich sein? | Beitrag zum Produktziel |
 |---|---|---|
-| **F1** |  Personenerkennung ohne Gesichtserkennung (aus Datenschutzrechtlichen Gründen) | Grundlegende Funktionalität |
+| **F1** | Personenerkennung ohne Gesichtserkennung (aus Datenschutzrechtlichen Gründen) | Grundlegende Funktionalität |
 | **F2** | Datenbankdokumentation über Middleware (OPCUA) | Dokumentation & Systemintegration |
 | **F3** | Dashboardübersicht mittels Node-Red | Überwachung & Übersichtlichkeit |
 | **F4** | Live-Feed der Kamera einsehen | Usability & User Interface |
+| **F5** | Einfaches Setup des Add-Ons & Kompatibilität | Aufwandsreduktion für den Kunden |
 
 # Materialbedarf
 | Komponente | Benötigt | Vorhanden |
@@ -41,3 +42,12 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 
 # Stakeholderanalyse:
 <img width="641" height="443" alt="image" src="https://github.com/user-attachments/assets/eab4b14d-d4b6-49b2-8356-7a8656966a86" />
+
+# Features aus Nutzersicht überprüfen:
+| Feature aus Schritt 3 | Personas / Bedürfnis | Unsere Entscheidung und Begründung |
+|---|---|---|
+| Personenerkennung ohne Gesichtserkennung |  IT-Administratorin Sarah Klein (Datenschutzbedenken), Wartungspersonal (möchte nicht das ihr Gesicht gepspeichert wird) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
+| Datenbankdokumentation über Middleware | IT-Administratorin Sarah Klein (Mangelnde Dokumentation) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
+| Dashboardübersicht mittels Node-Red | IT-Administratorin Sarah Klein (Übersichtlichkeit), Wachmann Markus Becker (Auf einen Blick wichtiges erkennen) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
+| Live-Feed der Kamera einsehen | Wachmann Markus Becker (damit Reaktionszeit bei potentiellem Alarm geringer ist) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
+| Einfaches Setup des Add-Ons & Kompatibilität | Sicherheitstechniker Thomas Wagner (Einfache Konfiguration), Geschäftsführer (Kein zusätzlicher Aufwand für Mitarbeiter) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
