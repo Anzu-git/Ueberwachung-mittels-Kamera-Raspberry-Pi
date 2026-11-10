@@ -58,13 +58,13 @@
 # Szenario bzw. Beispielzenario inkl. Firma
 Die Metallbau Kessler GmbH in Oldenburg hat einen Eingangsbereich mit Hofeinfahrt, eine Werkhalle, ein Gefahrstofflager für Lacke und Lösungsmittel sowie einen Flur zu den Büros und zum Serverschrank. Vier Kameras decken Hof und Eingang, die Werkhalle, das Gefahrstofflager und den Flur ab, während Büro, Pausenraum und Umkleiden kameralos bleiben.
 
-Phase 1: Inbetriebnahme durch Thomas Wagner
+**Phase 1:** Inbetriebnahme durch Thomas Wagner
 Thomas Wagner richtet das Add-On bei der Metallbau Kessler GmbH in Oldenburg an einem Dienstagmorgen über die Weboberfläche ein. Die Standardwerte sind bereits vorbelegt. Er muss nur noch die Alarmschwellen und die vier Kamerazonen prüfen: Hof und Eingang, Werkhalle, Gefahrstofflager sowie den Flur zu den Büros und zum Serverschrank. Vor dem Abschluss meldet das System, dass die Kamera für Hof und Eingang eine ältere Firmware hat, die nicht vollständig kompatibel ist. Die Meldung ist verständlich formuliert und nennt die nötige Aktualisierung. Thomas aktualisiert die Firmware und schließt die Inbetriebnahme ab, ohne den Betrieb zu unterbrechen. Peter Lang bekommt davon nichts mit, weil die Arbeiten außerhalb der Hauptschicht stattfinden. Genau das ist sein Kriterium aus US-5.2.
 
-Phase 2: Datenschutz-Prüfung durch Sarah Klein
+**Phase 2:** Datenschutz-Prüfung durch Sarah Klein
 Sarah Klein prüft die Konfiguration, bevor sie die Freigabe erteilt. In der Dokumentation zur Verarbeitung stellt sie fest, dass das System nur Personenumrisse auswertet. Gesichtsvektoren, Templates oder Gesichtsausschnitte gibt es laut Dokumentation nicht. Außerdem kontrolliert sie die Datenbankdokumentation über die Middleware. Dort findet sie für die installierte Version die Tabellen, Felder, Datentypen und Beziehungen. Im Rechtemanagement überprüft sie, dass der Zugriff darauf auf ihre Rolle beschränkt ist. Damit erfüllt das Add-On ihre Anforderungen aus US-1.1 und US-2.1.
 
-Phase 3: Alltag im Schichtbetrieb
+**Phase 3:** Alltag im Schichtbetrieb
 Markus Becker beginnt seine Nachtschicht und öffnet das Dashboard. Der Systemstatus ist ohne Scrollen sichtbar. Für jede der vier Kameras wird angezeigt, ob sie online oder offline ist oder einen Fehler hat. Um 2:14 Uhr meldet die Kamera im Gefahrstofflager für Lacke und Lösungsmittel eine Bewegung. Der Alarm erscheint rot markiert ganz oben in der Liste, ohne dass Markus die Seite neu laden muss. Mit einem Klick auf die Alarmmeldung gelangt er zum Live-Feed, und das Video startet nach etwa 8 Sekunden. Markus sieht, dass es nur Jan Vogel ist, der Wartungstechniker, der eine Leiter trägt. Jan wird dabei nicht als identifizierbare Person gespeichert, denn das System speichert keine Gesichter und unterscheidet nicht zwischen bekannten und unbekannten Personen. Markus schließt den Alarm als unkritisch ab.
 Am nächsten Morgen arbeitet Jan Vogel an den Deckenlampen. Er weiß, dass er auf der Kamera erkennbar ist, aber nicht identifizierbar erfasst wird. Die Ereignisse enthalten keine Angaben, die ihn als Person ausweisen. Deshalb muss er sich weder abmelden noch Sondergenehmigungen einholen.
 Zwei Stellen habe ich bewusst offen gelassen, weil sie weder im Original noch im Szenario stehen: in welchem Bereich Jan an den Deckenlampen arbeitet und welche Rollen Thomas, Sarah und Peter bei Kessler haben.
