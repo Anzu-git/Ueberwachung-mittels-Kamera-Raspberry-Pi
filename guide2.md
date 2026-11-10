@@ -43,6 +43,13 @@ Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompat
 ## Stakeholderanalyse:
 <img width="641" height="443" alt="image" src="https://github.com/user-attachments/assets/eab4b14d-d4b6-49b2-8356-7a8656966a86" />
 
+# Personas
+- Markus Becker (Wachmann)
+- Michael Schröder (Geschäftsführer des Kundenunternehmens)
+- Sarah Klein (IT-Administratorin)
+- Thomas Wagner (Sicherheitstechniker)
+- Tobias Stein (Wartungspersonal Extern)
+
 # Features aus Nutzersicht überprüfen:
 | Feature aus Schritt 3 | Personas / Bedürfnis | Unsere Entscheidung und Begründung |
 |---|---|---|
