@@ -8,7 +8,11 @@ Attentio erkennt in Echtzeit, ob sich Personen in einem überwachten Bereich auf
 <img width="2500" height="1514" alt="image" src="https://github.com/user-attachments/assets/8e7d5844-eada-4157-840f-f2e6394aeec2" />
 
 ### Problem
-Moderne Kamerasysteme sind viel zu teuer und unser Produkt ist als Add-on kompatibel mit verschiedenen Kamerasystemen und bestehenden Lösungen. Somit ist unser Produkt eine kostengünstige Lösung dieser Problematik. Mittels Attentio Kameraüberwachung wird die Abdeckung des Sicherheitskritischen Beriches erweitert und die Integrität geschützter Systeme zusätzlich unterstützt.
+Viele alte Kamerasysteme sind nicht miteinander kompatibel und vermissen moderne Features wie Personenerkennung und Benachrichtigungsysteme. Moderne Kamerasysteme sind teure, geschlossene Überwachungssysteme welche nicht mit alten Kamerasystemen erweitert werden können.
+
+Unser Produkt ist als Add-on mit verschiedenen Kamerasystemen und bestehenden Überwachungssystemen kompatibel. 
+Es ist eine kostengünstige Lösung alte Kamerasysteme mit den Anforderungen moderner Überwachungssysteme zu erweitern.
+Mittels Attentios Kameraüberwachung-Erweiterung wird die Abdeckung des Sicherheitskritischen Bereiches nachgerüstet und die Integrität geschützter Systeme zusätzlich unterstützt.
 
 #### Fähigkeiten:
 | Kennung und erstes Feature | Was soll damit möglich sein? | Beitrag zum Produktziel |
