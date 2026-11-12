@@ -50,7 +50,7 @@
 | | User Story 1 | User Story 2 |
 |---|---|---|
 | **User Story** | *„US-5.1: Als Sicherheitstechniker Thomas Wagner möchte ich das Add-On einfach konfigurieren können, damit die Inbetriebnahme schnell und fehlerfrei gelingt.“* | *„US-5.2: Als Geschäftsführer möchte ich, dass das Add-On ohne zusätzlichen Aufwand für die Mitarbeitenden auskommt, damit der Betriebsablauf nicht gestört wird.“* |
-| **Akzeptanzkriterien** | • Der Zugriff und die Konfiguration sind über eine Weboberfläche möglich. • Sinnvolle Standardwerte sind bereits vorbelegt. • Vor dem Abschluss prüft das System die Kompatibilität mit den vorhandenen Kameras und Systemen und meldet Probleme verständlich. | Im Original sind für diese Story keine Akzeptanzkriterien angegeben. |
+| **Akzeptanzkriterien** | • Der Zugriff und die Konfiguration sind über eine Weboberfläche möglich. • Sinnvolle Standardwerte sind bereits vorbelegt. • Vor dem Abschluss prüft das System die Kompatibilität mit den vorhandenen Kameras und Systemen und meldet Probleme verständlich. |  |
 
 
 # Szenario bzw. Beispielzenario inkl. Firma
