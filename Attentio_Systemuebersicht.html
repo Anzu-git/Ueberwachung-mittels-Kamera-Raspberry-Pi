@@ -40,6 +40,9 @@ svg.focusing .node:not(.near):not(.frame), svg.focusing .edge:not(.lit) { opacit
 .chip.nutzer { background:#e3f2e8; color:#2f6b42; }
 .info ul { margin:10px 0 0; padding-left:18px; }
 .info li { margin:4px 0; }
+.info .tech { margin-top:10px; padding-top:8px; border-top:1px solid var(--border); }
+.info .tech h3 { margin:0; font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+.info .tech ul { margin-top:6px; font-size:13.5px; color:var(--muted); }
 .info .close { border:0; background:transparent; color:var(--muted); font-size:20px; line-height:1; cursor:pointer; padding:0 2px; }
 @media (max-width: 700px) {
   .info { position:fixed; left:12px !important; right:12px; bottom:12px; top:auto !important; width:auto; max-height:55vh; overflow:auto; }
@@ -59,12 +62,12 @@ svg.focusing .node:not(.near):not(.frame), svg.focusing .edge:not(.lit) { opacit
 </defs>
 <rect width="2000" height="1150" fill="#ffffff"/>
 <text x="45" y="62" font-size="40" fill="#1f3a5f" font-weight="bold" text-anchor="start">Attentio — Systemübersicht</text>
-<text x="45" y="98" font-size="21" fill="#5b6472" font-weight="normal" text-anchor="start">KI-gestützte Personenerkennung · vollständig lokal beim Kunden</text>
+<text x="45" y="98" font-size="21" fill="#5b6472" font-weight="normal" text-anchor="start">Erkennt Personen auf Kamerabildern · alles bleibt beim Kunden</text>
 <text x="1955" y="62" font-size="22" fill="#6b7280" font-weight="bold" text-anchor="end">MABJA Solutions GmbH</text>
-<g class="node frame" data-id="network" tabindex="0" role="button" aria-label="Kundenumgebung"><rect class="box" x="25" y="125" width="1950" height="915" rx="20" fill="none" stroke="#b8c1cf" stroke-width="2.5" stroke-dasharray="12 9"/><text x="55" y="165" font-size="22" fill="#5b6472" font-weight="bold" text-anchor="start">Kundenumgebung · lokal</text></g>
-<text x="235" y="220" font-size="23" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Netzwerkkameras</text>
+<g class="node frame" data-id="network" tabindex="0" role="button" aria-label="Kundenumgebung"><rect class="box" x="25" y="125" width="1950" height="915" rx="20" fill="none" stroke="#b8c1cf" stroke-width="2.5" stroke-dasharray="12 9"/><text x="55" y="165" font-size="22" fill="#5b6472" font-weight="bold" text-anchor="start">Beim Kunden vor Ort</text></g>
+<text x="235" y="220" font-size="23" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Kameras</text>
 <text x="235" y="568" font-size="30" fill="#2e6da4" font-weight="bold" text-anchor="middle">⋮</text>
-<g class="node frame" data-id="server" tabindex="0" role="button" aria-label="Attentio-Server"><rect class="box" x="505" y="150" width="1155" height="840" rx="18" fill="#f7f9fb" stroke="#1f3a5f" stroke-width="2.5"/><text x="530" y="192" font-size="28" fill="#1f3a5f" font-weight="bold" text-anchor="start">Attentio-Server</text><text x="1635" y="192" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="end">Edge-Server mit KI-Beschleuniger · Container</text></g>
+<g class="node frame" data-id="server" tabindex="0" role="button" aria-label="Attentio-Server"><rect class="box" x="505" y="150" width="1155" height="840" rx="18" fill="#f7f9fb" stroke="#1f3a5f" stroke-width="2.5"/><text x="530" y="192" font-size="28" fill="#1f3a5f" font-weight="bold" text-anchor="start">Attentio-Server</text><text x="1635" y="192" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="end">kleiner Rechner mit KI-Chip, vor Ort</text></g>
 <g class="edge" data-id="e0" data-a="cam1" data-b="hub">
 <path d="M400,312 H460 V320 H539" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M400,312 H460 V320 H539" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
@@ -76,42 +79,42 @@ svg.focusing .node:not(.near):not(.frame), svg.focusing .edge:not(.lit) { opacit
 <g class="edge" data-id="e2" data-a="camn" data-b="hub">
 <path d="M400,647 H480 V390 H539" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M400,647 H480 V390 H539" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
-<text class="elabel" x="425" y="745" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Videostreams</text>
+<text class="elabel" x="425" y="745" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Videobilder</text>
 </g>
 <g class="edge" data-id="e3" data-a="hub" data-b="ai">
 <path d="M845,320 H939" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M845,320 H939" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
-<text class="elabel" x="895" y="308" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Video</text>
+<text class="elabel" x="895" y="308" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Bilder</text>
 </g>
 <g class="edge" data-id="e4" data-a="ai" data-b="hub">
 <path d="M945,395 H851" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M945,395 H851" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
-<text class="elabel" x="895" y="422" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">annotiert</text>
+<text class="elabel" x="895" y="422" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">markiert</text>
 </g>
 <g class="edge" data-id="e5" data-a="hub" data-b="dashboard">
 <path d="M695,265 V228 H1475 V259" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M695,265 V228 H1475 V259" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
-<text class="elabel" x="1085" y="218" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Annotierter Livestream</text>
+<text class="elabel" x="1085" y="218" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Livebild mit Markierungen</text>
 </g>
 <g class="edge" data-id="e6" data-a="ai" data-b="opcua">
 <path d="M1095,445 V524" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M1095,445 V524" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
-<text class="elabel" x="1107" y="492" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Metadaten</text>
+<text class="elabel" x="1107" y="492" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Anzahl Personen</text>
 </g>
 <g class="edge" data-id="e7" data-a="opcua" data-b="dashboard">
 <path d="M1245,612 H1324" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M1245,612 H1324" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
-<text class="elabel" x="1287" y="600" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Live</text>
+<text class="elabel" x="1287" y="600" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">jetzt</text>
 </g>
 <g class="edge" data-id="e8" data-a="opcua" data-b="db">
 <path d="M1095,695 V774" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M1095,695 V774" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
-<text class="elabel" x="1107" y="742" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Protokollierung</text>
+<text class="elabel" x="1107" y="742" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">speichern</text>
 </g>
 <g class="edge" data-id="e9" data-a="db" data-b="dashboard">
 <path d="M1245,862 H1324" fill="none" stroke="transparent" stroke-width="18"/>
 <path class="line" d="M1245,862 H1324" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
-<text class="elabel" x="1287" y="850" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Verlauf</text>
+<text class="elabel" x="1287" y="850" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">früher</text>
 </g>
 <g class="edge" data-id="e10" data-a="dashboard" data-b="staff">
 <path d="M1620,570 H1739" fill="none" stroke="transparent" stroke-width="18"/>
@@ -135,91 +138,95 @@ svg.focusing .node:not(.near):not(.frame), svg.focusing .edge:not(.lit) { opacit
 <text x="182" y="462" font-size="26" fill="#1f3a5f" font-weight="bold" text-anchor="start">Kamera 2</text>
 <text x="182" y="495" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">z. B. Serverraum</text>
 </g>
-<g class="node" data-id="camn" tabindex="0" role="button" aria-label="Kamera n">
+<g class="node" data-id="camn" tabindex="0" role="button" aria-label="Weitere">
 <rect class="box" x="70" y="585" width="330" height="125" rx="14" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
 <g fill="none" stroke="#2e6da4" stroke-width="3" stroke-linejoin="round"><rect x="102" y="632.5" width="38" height="30" rx="5"/><path d="M140,641.5 L155,632.5 V662.5 L140,653.5"/><circle cx="121" cy="647.5" r="7"/></g>
-<text x="182" y="642" font-size="26" fill="#1f3a5f" font-weight="bold" text-anchor="start">Kamera n</text>
-<text x="182" y="675" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">beliebig erweiterbar</text>
+<text x="182" y="642" font-size="26" fill="#1f3a5f" font-weight="bold" text-anchor="start">Weitere</text>
+<text x="182" y="675" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">beliebig viele</text>
 </g>
-<g class="node" data-id="hub" tabindex="0" role="button" aria-label="Video-Hub">
+<g class="node" data-id="hub" tabindex="0" role="button" aria-label="Bildverteiler">
 <rect class="box" x="545" y="265" width="300" height="180" rx="14" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
-<text x="695.0" y="315" font-size="27" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Video-Hub</text>
-<text x="695.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">empfängt alle Streams</text>
-<text x="695.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">verteilt Original &amp;</text>
-<text x="695.0" y="413" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">annotiertes Bild</text>
+<text x="695.0" y="315" font-size="27" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Bildverteiler</text>
+<text x="695.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">sammelt die Bilder</text>
+<text x="695.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">aller Kameras und</text>
+<text x="695.0" y="413" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">gibt sie weiter</text>
 </g>
-<g class="node" data-id="ai" tabindex="0" role="button" aria-label="KI-Analyse">
+<g class="node" data-id="ai" tabindex="0" role="button" aria-label="KI-Erkennung">
 <rect class="box" x="945" y="265" width="300" height="180" rx="14" fill="#fcf1df" stroke="#b7791f" stroke-width="2.5"/>
-<text x="1095.0" y="315" font-size="27" fill="#b7791f" font-weight="bold" text-anchor="middle">KI-Analyse</text>
-<text x="1095.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Personenerkennung</text>
-<text x="1095.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">&amp; Tracking</text>
-<text x="1095.0" y="413" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">KI-Beschleuniger</text>
+<text x="1095.0" y="315" font-size="27" fill="#b7791f" font-weight="bold" text-anchor="middle">KI-Erkennung</text>
+<text x="1095.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">findet Personen</text>
+<text x="1095.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">im Bild und</text>
+<text x="1095.0" y="413" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">markiert sie</text>
 </g>
-<g class="node" data-id="opcua" tabindex="0" role="button" aria-label="OPC-UA-Server">
+<g class="node" data-id="opcua" tabindex="0" role="button" aria-label="Meldestelle">
 <rect class="box" x="945" y="530" width="300" height="165" rx="14" fill="#e8f3ec" stroke="#3a7d4f" stroke-width="2.5"/>
-<text x="1095.0" y="580" font-size="27" fill="#3a7d4f" font-weight="bold" text-anchor="middle">OPC-UA-Server</text>
-<text x="1095.0" y="622" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Metadaten je Kamera</text>
-<text x="1095.0" y="650" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Personen · Status · Zeit</text>
+<text x="1095.0" y="580" font-size="27" fill="#3a7d4f" font-weight="bold" text-anchor="middle">Meldestelle</text>
+<text x="1095.0" y="622" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">meldet je Kamera:</text>
+<text x="1095.0" y="650" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Wie viele Personen?</text>
 </g>
-<g class="node" data-id="db" tabindex="0" role="button" aria-label="Datenbank">
+<g class="node" data-id="db" tabindex="0" role="button" aria-label="Protokoll">
 <rect class="box" x="945" y="780" width="300" height="165" rx="14" fill="#e8f3ec" stroke="#3a7d4f" stroke-width="2.5"/>
-<text x="1095.0" y="830" font-size="27" fill="#3a7d4f" font-weight="bold" text-anchor="middle">Datenbank</text>
-<text x="1095.0" y="872" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">leichtgewichtig</text>
-<text x="1095.0" y="900" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Protokoll je Kamera</text>
+<text x="1095.0" y="830" font-size="27" fill="#3a7d4f" font-weight="bold" text-anchor="middle">Protokoll</text>
+<text x="1095.0" y="872" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">merkt sich die Zahlen</text>
+<text x="1095.0" y="900" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">für den Rückblick</text>
 </g>
 <g class="node" data-id="dashboard" tabindex="0" role="button" aria-label="Dashboard">
 <rect class="box" x="1330" y="265" width="290" height="680" rx="14" fill="#e8eef6" stroke="#1f3a5f" stroke-width="2.5"/>
 <text x="1475.0" y="315" font-size="27" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Dashboard</text>
-<text x="1475.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Live-Übersicht</text>
-<text x="1475.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">aller Kameras</text>
-<text x="1475.0" y="453" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Annotiertes</text>
-<text x="1475.0" y="481" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Livebild</text>
-<text x="1475.0" y="549" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Konfigurierbare</text>
-<text x="1475.0" y="577" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Warnungen</text>
-<text x="1475.0" y="645" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Verlauf je Kamera</text>
-<text x="1475.0" y="713" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Einstellungen</text>
-<text x="1475.0" y="781" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Anmeldung &amp; Rechte</text>
+<text x="1475.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Alle Kameras</text>
+<text x="1475.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">auf einen Blick</text>
+<text x="1475.0" y="453" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Livebild mit</text>
+<text x="1475.0" y="481" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Markierungen</text>
+<text x="1475.0" y="549" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Warnung bei</text>
+<text x="1475.0" y="577" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Auffälligkeiten</text>
+<text x="1475.0" y="645" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Rückblick</text>
+<text x="1475.0" y="673" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">je Kamera</text>
+<text x="1475.0" y="741" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Einstellungen</text>
+<text x="1475.0" y="809" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Nur mit Anmeldung</text>
 </g>
 <g class="node" data-id="privacy" tabindex="0" role="button" aria-label="Datenschutz">
 <rect class="box" x="545" y="530" width="300" height="415" rx="14" fill="#ffffff" stroke="#b8c1cf" stroke-width="2.5"/>
 <text x="695.0" y="580" font-size="27" fill="#4b5563" font-weight="bold" text-anchor="middle">Datenschutz</text>
-<text x="695.0" y="622" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">vollständig lokal</text>
-<text x="695.0" y="694" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">keine Bildaufzeichnung</text>
-<text x="695.0" y="766" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">keine Identifizierung</text>
-<text x="695.0" y="838" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">nur anonyme</text>
-<text x="695.0" y="866" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Metadaten</text>
+<text x="695.0" y="622" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Alles bleibt im Haus</text>
+<text x="695.0" y="694" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Keine Video-</text>
+<text x="695.0" y="722" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">aufnahmen</text>
+<text x="695.0" y="794" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Personen bleiben</text>
+<text x="695.0" y="822" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">anonym</text>
+<text x="695.0" y="894" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Gespeichert werden</text>
+<text x="695.0" y="922" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">nur Zahlen</text>
 </g>
 <g class="node" data-id="staff" tabindex="0" role="button" aria-label="Personal">
 <rect class="box" x="1745" y="505" width="200" height="200" rx="14" fill="#ffffff" stroke="#1f3a5f" stroke-width="2.5"/>
 <g fill="none" stroke="#1f3a5f" stroke-width="3"><circle cx="1845.0" cy="551" r="11"/><path d="M1823.0,585 C1823.0,565 1867.0,565 1867.0,585"/></g>
 <text x="1845.0" y="627" font-size="25" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Personal</text>
-<text x="1845.0" y="659" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="middle">autorisiert</text>
-<text x="1845.0" y="685" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="middle">Browser</text>
+<text x="1845.0" y="659" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="middle">berechtigte</text>
+<text x="1845.0" y="685" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="middle">Mitarbeiter</text>
 </g>
 <line x1="505" y1="1092" x2="575" y2="1092" stroke="#2e6da4" stroke-width="4"/>
-<text x="590" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Video</text>
+<text x="590" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Bilder</text>
 <line x1="755" y1="1092" x2="825" y2="1092" stroke="#3a7d4f" stroke-width="4"/>
-<text x="840" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Metadaten</text>
+<text x="840" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Zahlen</text>
 <line x1="1005" y1="1092" x2="1075" y2="1092" stroke="#1f3a5f" stroke-width="4"/>
 <text x="1090" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Bedienung</text>
 <rect x="1255" y="1079" width="30" height="26" rx="4" fill="#fcf1df" stroke="#b7791f" stroke-width="2"/>
-<text x="1300" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">KI-Inferenz</text>
-<text x="45" y="1099" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="start" font-style="italic">Bereiche anklicken für Details</text>
+<text x="1300" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Künstliche Intelligenz</text>
+<text x="45" y="1099" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="start" font-style="italic">Für Details anklicken</text>
 </svg>
     </div>
     <div class="info" id="info" hidden role="dialog" aria-live="polite">
       <div class="info-head"><div><h2 id="info-title"></h2><div class="sub" id="info-sub"></div></div>
         <span class="chip" id="info-chip"></span><button class="close" id="info-close" aria-label="Schließen">×</button></div>
       <ul id="info-list"></ul>
+      <div id="info-tech"></div>
     </div>
   </div>
   <p class="note">MABJA Solutions GmbH · Projekt „Serverraumüberwachung (Kamera &amp; Raspberry Pi)“ · Produkt Attentio. Bereiche überfahren zum Hervorheben, anklicken für Details.</p>
 </main>
 <script>
-const INFO = {"cam1": {"sub": "Netzwerkkamera", "items": ["Beliebig viele handelsübliche Netzwerkkameras (IP-Kameras) im Netz des Kunden; vorhandene Kameras lassen sich weiter nutzen.", "Jede Kamera schickt ihren Videostream (RTSP, H.264) über das lokale Netz an den Attentio-Server.", "Neue Kameras werden automatisch erkannt; Ausrichtung und Bildgröße sind je Kamera im Dashboard einstellbar."]}, "cam2": {"sub": "Netzwerkkamera", "items": ["Beliebig viele handelsübliche Netzwerkkameras (IP-Kameras) im Netz des Kunden; vorhandene Kameras lassen sich weiter nutzen.", "Jede Kamera schickt ihren Videostream (RTSP, H.264) über das lokale Netz an den Attentio-Server.", "Neue Kameras werden automatisch erkannt; Ausrichtung und Bildgröße sind je Kamera im Dashboard einstellbar."]}, "camn": {"sub": "Netzwerkkamera", "items": ["Beliebig viele handelsübliche Netzwerkkameras (IP-Kameras) im Netz des Kunden; vorhandene Kameras lassen sich weiter nutzen.", "Jede Kamera schickt ihren Videostream (RTSP, H.264) über das lokale Netz an den Attentio-Server.", "Neue Kameras werden automatisch erkannt; Ausrichtung und Bildgröße sind je Kamera im Dashboard einstellbar."]}, "hub": {"sub": "Container · Stream-Verteilung", "items": ["Zentrale Annahmestelle für alle Kamerastreams; jede Kamera hat einen eigenen Kanal.", "Leitet das Originalbild an die KI-Analyse weiter und stellt das annotierte Bild für das Dashboard bereit.", "Zugriff nur mit Zugangsdaten je Rolle: Kameras dürfen nur senden, die Analyse nur ihre Ergebnisse veröffentlichen."]}, "ai": {"sub": "Container · Personenerkennung", "items": ["Erkennt Personen in Echtzeit mit einem KI-Beschleuniger direkt im Server; keine Cloud nötig.", "Tracking hält jede Person über die Bildfolge mit derselben Markierung, ohne sie zu identifizieren.", "Erzeugt je Kamera das annotierte Bild (Markierungen) und die Metadaten.", "Mehrere Kameras parallel, jede in ihrem eigenen Prozess; fällt einer aus, laufen die anderen weiter."]}, "opcua": {"sub": "Container · Schnittstelle", "items": ["Stellt die Metadaten über OPC UA bereit, einen offenen Industriestandard.", "Je Kamera, einmal pro Sekunde: Anzahl Personen, Kamera aktiv, Zeitstempel.", "Dashboard und Datenbank lesen hier; auch vorhandene Leit- oder Gebäudesysteme können sich anbinden."]}, "db": {"sub": "Container · Protokoll", "items": ["Leichtgewichtige Datenbank, die alle Metadaten je Kamera mitschreibt.", "Gespeichert werden nur Zahlen und Zustände (Zeit, Personenanzahl, Erkennung, Kamerastatus), keine Bilder.", "Aufbewahrungsdauer einstellbar; im Dashboard als Verlauf je Kamera abrufbar."]}, "dashboard": {"sub": "Container · Weboberfläche", "items": ["Zugang nur für autorisiertes Personal, mit Anmeldung und Rechten je Rolle.", "Live-Übersicht aller Kameras: Status, Anzahl Personen, annotiertes Livebild.", "Konfigurierbare Warnungen, z. B. Person außerhalb erlaubter Zeiten oder Kamera ausgefallen.", "Verlauf je Kamera aus der Datenbank; individuelle Einstellungen für Kameras und Anzeige."]}, "privacy": {"sub": "Privacy by Design", "items": ["Das gesamte System läuft lokal beim Kunden; keine Cloud, keine Daten außer Haus.", "Videobilder werden nur flüchtig im Arbeitsspeicher verarbeitet und nicht aufgezeichnet.", "Keine Identifizierung von Personen; gespeichert werden nur anonyme Metadaten.", "Einsicht nur für autorisiertes Personal."]}, "staff": {"sub": "Nutzer", "items": ["Sicherheits- oder Betriebspersonal mit Berechtigung.", "Zugriff per Browser im lokalen Netz: am Leitstand, am Arbeitsplatz oder mobil.", "Erhält Warnungen sofort und passt Einstellungen im Rahmen seiner Rechte an."]}, "network": {"sub": "Lokales Netzwerk", "items": ["Kameras, Server und Dashboard befinden sich vollständig im Netz des Kunden.", "Keine Internetverbindung nötig: Videos und Daten verlassen das Gebäude nicht.", "Edge Computing: Die KI-Auswertung findet dort statt, wo die Bilder entstehen."]}, "server": {"sub": "Edge-Server", "items": ["Kompakter Server mit KI-Beschleuniger beim Kunden vor Ort.", "Alle Dienste laufen als einzelne Container: getrennt, einzeln aktualisierbar und erweiterbar.", "Liefert annotierte Streams und Metadaten an Dashboard und Datenbank."]}};
-const TITLES = {"cam1": "Kamera 1", "cam2": "Kamera 2", "camn": "Weitere Kameras", "hub": "Video-Hub", "ai": "KI-Analyse", "opcua": "OPC-UA-Server", "db": "Datenbank", "dashboard": "Dashboard", "privacy": "Datenschutz", "staff": "Personal", "network": "Kundenumgebung", "server": "Attentio-Server"};
+const INFO = {"cam1": {"sub": "Kamera beim Kunden", "items": ["Ganz normale Netzwerkkameras, wie sie in vielen Gebäuden schon hängen. Vorhandene Kameras können weiter genutzt werden.", "Jede Kamera schickt ihr Bild über das hauseigene Netzwerk an den Attentio-Server.", "Es können beliebig viele Kameras sein; neue werden automatisch erkannt."], "tech": ["IP-Kameras, Videostream per RTSP, H.264.", "Drehung und Bildgröße je Kamera im Dashboard einstellbar."]}, "cam2": {"sub": "Kamera beim Kunden", "items": ["Ganz normale Netzwerkkameras, wie sie in vielen Gebäuden schon hängen. Vorhandene Kameras können weiter genutzt werden.", "Jede Kamera schickt ihr Bild über das hauseigene Netzwerk an den Attentio-Server.", "Es können beliebig viele Kameras sein; neue werden automatisch erkannt."], "tech": ["IP-Kameras, Videostream per RTSP, H.264.", "Drehung und Bildgröße je Kamera im Dashboard einstellbar."]}, "camn": {"sub": "Kamera beim Kunden", "items": ["Ganz normale Netzwerkkameras, wie sie in vielen Gebäuden schon hängen. Vorhandene Kameras können weiter genutzt werden.", "Jede Kamera schickt ihr Bild über das hauseigene Netzwerk an den Attentio-Server.", "Es können beliebig viele Kameras sein; neue werden automatisch erkannt."], "tech": ["IP-Kameras, Videostream per RTSP, H.264.", "Drehung und Bildgröße je Kamera im Dashboard einstellbar."]}, "hub": {"sub": "Teil des Attentio-Servers", "items": ["Die Sammelstelle für alle Kamerabilder; jede Kamera hat ihren eigenen Kanal.", "Gibt die Bilder an die KI-Erkennung weiter und die markierten Bilder an das Dashboard.", "Nur berechtigte Geräte dürfen Bilder senden oder abholen."], "tech": ["Streaming-Server (MediaMTX) als Container.", "RTSP/WebRTC, Zugangsdaten je Rolle."]}, "ai": {"sub": "Teil des Attentio-Servers", "items": ["Künstliche Intelligenz erkennt in jedem Bild, wo Personen sind, und zeichnet einen Rahmen um sie.", "Sie folgt jeder Person durch das Bild, weiß aber nicht, wer sie ist.", "Daraus entstehen das markierte Livebild und die Anzahl der Personen je Kamera.", "Läuft direkt im Server auf einem eigenen KI-Chip; nichts geht ins Internet."], "tech": ["Personenerkennung (YOLO) auf einem Hailo-KI-Beschleuniger.", "Tracking (ByteTrack), ein eigener Prozess je Kamera.", "Mehrere Kameras parallel; fällt eine aus, laufen die anderen weiter."]}, "opcua": {"sub": "Teil des Attentio-Servers", "items": ["Meldet jede Sekunde für jede Kamera: Wie viele Personen sind zu sehen, läuft die Kamera, und wann war das?", "Dashboard und Protokoll holen sich die Zahlen von hier.", "Auch andere Systeme des Kunden, z. B. eine Gebäudeleittechnik, können diese Meldungen nutzen."], "tech": ["OPC-UA-Server (offener Industriestandard).", "Werte je Kamera: PersonCount, CameraConnected, Timestamp; 1 Hz."]}, "db": {"sub": "Teil des Attentio-Servers", "items": ["Schreibt die Zahlen laufend mit, damit man später nachsehen kann: Wann waren wie viele Personen da?", "Es werden keine Bilder gespeichert, nur Zahlen und Uhrzeiten.", "Wie lange die Einträge aufbewahrt werden, ist einstellbar."], "tech": ["Leichtgewichtige Datenbank, ein Eintrag je Kamera und Zeitpunkt.", "Felder: Zeitstempel, Anzahl Personen, Erkennung (ja/nein), Kamerastatus."]}, "dashboard": {"sub": "Teil des Attentio-Servers", "items": ["Die Bedienoberfläche, die man im Webbrowser öffnet, z. B. am PC im Leitstand oder auf dem Tablet.", "Zeigt alle Kameras auf einen Blick: läuft sie, wie viele Personen sind zu sehen, und das Livebild mit Markierungen.", "Warnt, wenn etwas auffällt, z. B. eine Person außerhalb der erlaubten Zeiten oder eine ausgefallene Kamera.", "Zeigt für jede Kamera den Verlauf aus dem Protokoll.", "Nur für angemeldete, berechtigte Personen."], "tech": ["Weboberfläche als Container; Anmeldung mit Rollen und Rechten.", "Liest die Meldestelle (OPC UA) und das Protokoll (Datenbank).", "Warnregeln und Kameraeinstellungen frei konfigurierbar."]}, "privacy": {"sub": "Datenschutz eingebaut", "items": ["Alles läuft beim Kunden vor Ort; keine Cloud, nichts verlässt das Gebäude.", "Kamerabilder werden nur kurz zur Auswertung verwendet und nie gespeichert.", "Das System erkennt, dass eine Person da ist, aber nicht, wer es ist.", "Gespeichert werden nur Zahlen, z. B. „3 Personen um 14:05 Uhr“.", "Einsehen dürfen das nur berechtigte Mitarbeiter."], "tech": ["Privacy by Design: Bilder nur im Arbeitsspeicher, keine Aufzeichnung, keine Wiedererkennung (Re-ID)."]}, "staff": {"sub": "Nutzer", "items": ["Zum Beispiel Sicherheits- oder Haustechnik-Personal mit Berechtigung.", "Öffnet das Dashboard im Browser, am Arbeitsplatz, im Leitstand oder unterwegs im Gebäude.", "Bekommt Warnungen sofort angezeigt und kann Einstellungen im Rahmen seiner Rechte ändern."]}, "network": {"sub": "Beim Kunden vor Ort", "items": ["Kameras, Server und Dashboard stehen alle beim Kunden im eigenen Netzwerk.", "Es wird keine Internetverbindung gebraucht; Bilder und Daten bleiben im Haus.", "Die Auswertung passiert dort, wo die Bilder entstehen."], "tech": ["Edge Computing: lokale KI-Auswertung ohne Cloud-Dienste."]}, "server": {"sub": "Herzstück des Systems", "items": ["Ein kleiner Rechner mit eingebautem KI-Chip, der beim Kunden steht.", "Er nimmt die Kamerabilder an, wertet sie aus und stellt die Ergebnisse dem Dashboard bereit.", "Jede Aufgabe läuft als eigener Baustein; so lässt sich das System leicht erweitern und warten."], "tech": ["Edge-Server mit KI-Beschleuniger; alle Dienste als Container."]}};
+const TITLES = {"cam1": "Kamera 1", "cam2": "Kamera 2", "camn": "Weitere Kameras", "hub": "Bildverteiler", "ai": "KI-Erkennung", "opcua": "Meldestelle", "db": "Protokoll", "dashboard": "Dashboard", "privacy": "Datenschutz", "staff": "Personal", "network": "Beim Kunden vor Ort", "server": "Attentio-Server"};
 const STATUS = {"cam1": "kunde", "cam2": "kunde", "camn": "kunde", "hub": "server", "ai": "server", "opcua": "server", "db": "server", "dashboard": "server", "privacy": "server", "staff": "nutzer", "network": "kunde", "server": "server"};
-const CHIP = { kunde: 'Kundenumgebung', server: 'Attentio-Server', nutzer: 'Nutzer' };
+const CHIP = { kunde: 'Beim Kunden', server: 'Attentio-Server', nutzer: 'Nutzer' };
 const svg = document.querySelector('#diagram svg');
 const diagram = document.getElementById('diagram');
 const box = document.getElementById('info');
@@ -256,6 +263,15 @@ function open(id, clientX, clientY) {
   document.getElementById('info-list').replaceChildren(...d.items.map((t) => {
     const li = document.createElement('li'); li.textContent = t; return li;
   }));
+  const tech = document.getElementById('info-tech');
+  tech.replaceChildren();
+  if (d.tech) {
+    const wrap = document.createElement('div'); wrap.className = 'tech';
+    const head = document.createElement('h3'); head.textContent = 'Technische Details';
+    const ul = document.createElement('ul');
+    ul.append(...d.tech.map((t) => { const li = document.createElement('li'); li.textContent = t; return li; }));
+    wrap.append(head, ul); tech.append(wrap);
+  }
   box.hidden = false;
   const r = diagram.getBoundingClientRect();
   const bw = box.offsetWidth, bh = box.offsetHeight;
@@ -278,7 +294,7 @@ function close() {
 for (const n of nodes) {
   n.addEventListener('mouseenter', () => { if (!selected) light(n.dataset.id); });
   n.addEventListener('mouseleave', () => { if (!selected) light(null); });
-  n.addEventListener('click', (ev) => { ev.stopPropagation(); open(n.dataset.id, ev.clientX, ev.clientY); });
+  n.addEventListener('click', (ev) => { ev.stopPropagation(); if (selected) { close(); return; } open(n.dataset.id, ev.clientX, ev.clientY); });
   n.addEventListener('keydown', (ev) => {
     if (ev.key !== 'Enter' && ev.key !== ' ') return;
     ev.preventDefault();
