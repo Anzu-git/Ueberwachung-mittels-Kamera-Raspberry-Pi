@@ -29,7 +29,7 @@
 
 ## 3. Dashboardübersicht
 
-| | User Story 1 | User Story 2 |
+| | User Story 1 |
 |---|---|---|
 | **User Story** | *„US-3.1: Als Wachmann Markus Becker möchte ich wichtige Ereignisse auf einen Blick erkennen, damit ich nicht erst durch Details suchen muss.“* |
 | **Akzeptanzkriterien** | • Der Systemstatus ist ohne Scrollen auf einem Bildschirm sichtbar. • Kameras und Systeme zeigen Online-, Offline- und Fehlerstatus an. • Kritische Ereignisse sind durch Farbe und Symbol hervorgehoben. • Ereignisse sind nach Priorität und Zeitpunkt sortiert. • Neue Alarme sind sofort sichtbar, ohne dass das Dashboard neu geladen werden muss. |
