@@ -2,17 +2,6 @@
 
 | Unsere verbindlichen Qualitätskriterien | So prüfen und belegen wir sie |
 |---|---|
-| Funktionale Dockeranbindung & erfolgreiche Installation der Container | Fehlerfreier Start & Beinhaltung der Datenbank usw. + Kontrolle durch vier-Augen-Prinzip |
-| Tailscale Mesh verbunden | beide Raspberry Pis sind funktionsfähig & verbunden |
-| Kameras funktionell & verbunden | Live-Bildübertragung läuft |
-| Aufrufbares & Funktionsfähiges Dashboard mit integrierten Kameras | Prüfung durch Projektmitglieder |
-| Sauberes Logging | Kontrolle durch Testlogging |
-| Datenbank ist konfiguriert & erreichbar | Überprüfung der Datentypen & Datenbankaufbau |
-
-# Definition of Done 2.0
-
-| Unsere verbindlichen Qualitätskriterien | So prüfen und belegen wir sie |
-|---|---|
 |System funktionell| Es werden Keine Fehler oder Warnungen gemeldet und alle Services sind erreichbar|
 |System getestet| Anwendbare Szenarien wurden abgebildet|
 |Dokumentation vollständig| Geänderte Aspekte und Hinweise ausreichend dokumentiert|
@@ -22,10 +11,10 @@
 
 ## 1. Personenerkennung ohne Gesichtserkennung
 
-| | User Story 1 | User Story 2 |
-|---|---|---|
-| **User Story** | *„US-1.1: Als IT-Administratorin Sarah Klein möchte ich, dass das System Personen erkennt, ohne Gesichtsmerkmale zu verarbeiten, damit meine Datenschutzbedenken ausgeräumt sind.“* | *„US-1.2: Als Wartungspersonal möchte ich, dass mein Gesicht nicht gespeichert wird, damit ich bei meiner Arbeit im Gebäude nicht identifizierbar erfasst werde.“* |
-| **Akzeptanzkriterien** | • Die Erkennung arbeitet ausschließlich mit Personenumrissen, nicht mit Gesichtsmerkmalen. • Es werden keine Gesichtsvektoren, Templates oder Gesichtsausschnitte gespeichert. • Die Verarbeitung ist in der Dokumentation nachvollziehbar beschrieben. | • Ereignisse enthalten keine Angaben, die eine Person identifizieren. • Gesichter werden weder im Live-Feed noch in Aufzeichnungen dauerhaft gespeichert. • Das System unterscheidet nicht zwischen bekannten und unbekannten Personen. |
+|---| User Story 1 |
+|---|---|
+| **User Story** | *„US-1.1: Als IT-Administratorin Sarah Klein möchte ich, dass das System Personen erkennt, ohne Gesichtsmerkmale zu verarbeiten, damit meine Datenschutzbedenken ausgeräumt sind.“* |
+| **Akzeptanzkriterien** | • Die Erkennung arbeitet ausschließlich mit Personenumrissen, nicht mit Gesichtsmerkmalen. • Es werden keine Gesichtsvektoren, Templates oder Gesichtsausschnitte gespeichert • Gesichter werden weder im Live-Feed noch in Aufzeichnungen dauerhaft gespeichert. • Das System unterscheidet nicht zwischen bekannten und unbekannten Personen. |
 
 ---
 
