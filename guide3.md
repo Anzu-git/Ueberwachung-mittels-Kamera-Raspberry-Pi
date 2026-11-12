@@ -11,7 +11,7 @@
 
 ## 1. Personenerkennung ohne Gesichtserkennung
 
-|---| User Story 1 |
+|| User Story 1 |
 |---|---|
 | **User Story** | *„US-1.1: Als IT-Administratorin Sarah Klein möchte ich, dass das System Personen erkennt, ohne Gesichtsmerkmale zu verarbeiten, damit meine Datenschutzbedenken ausgeräumt sind.“* |
 | **Akzeptanzkriterien** | • Die Erkennung arbeitet ausschließlich mit Personenumrissen, nicht mit Gesichtsmerkmalen. • Es werden keine Gesichtsvektoren, Templates oder Gesichtsausschnitte gespeichert • Gesichter werden weder im Live-Feed noch in Aufzeichnungen dauerhaft gespeichert. • Das System unterscheidet nicht zwischen bekannten und unbekannten Personen. |
