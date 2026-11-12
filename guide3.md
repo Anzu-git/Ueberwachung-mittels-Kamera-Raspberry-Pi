@@ -9,6 +9,15 @@
 | Sauberes Logging | Kontrolle durch Testlogging |
 | Datenbank ist konfiguriert & erreichbar | Überprüfung der Datentypen & Datenbankaufbau |
 
+# Definition of Done 2.0
+
+| Unsere verbindlichen Qualitätskriterien | So prüfen und belegen wir sie |
+|---|---|
+|System funktionell| Es werden Keine Fehler oder Warnungen gemeldet und alle Services sind erreichbar|
+|System getestet| Anwendbare Szenarien wurden abgebildet|
+|Dokumentation vollständig| Geänderte Aspekte und Hinweise ausreichend dokumentiert|
+|User Story erfolgreich abgebildet| Akzeptanzkriterien erfüllt|
+
 # User Stories
 
 ## 1. Personenerkennung ohne Gesichtserkennung
