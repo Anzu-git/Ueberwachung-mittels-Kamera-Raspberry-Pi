@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attentio Systemübersicht</title>
+<style>
+:root { --bg:#eef2f6; --card:#ffffff; --text:#1f2933; --muted:#5b6472; --border:#d7dde5; --accent:#2e6da4; --shadow:0 10px 30px rgba(15,30,50,.18); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0f141b; --card:#1a222d; --text:#e6ebf1; --muted:#9aa6b4; --border:#2c3746; --accent:#6aa5dc; --shadow:0 10px 30px rgba(0,0,0,.5); } }
+:root[data-theme="dark"] { --bg:#0f141b; --card:#1a222d; --text:#e6ebf1; --muted:#9aa6b4; --border:#2c3746; --accent:#6aa5dc; --shadow:0 10px 30px rgba(0,0,0,.5); }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family: DejaVu Sans, "Segoe UI", system-ui, Arial, sans-serif; }
+main { max-width:1500px; margin:0 auto; padding:24px 16px 40px; }
+.diagram { position:relative; background:#fff; border-radius:14px; box-shadow:var(--shadow); overflow:hidden; }
+.scroller { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.diagram svg { display:block; width:100%; height:auto; }
+@media (max-width: 900px) { .diagram svg { min-width:1100px; } .hint-mobile { display:block; } }
+.hint-mobile { display:none; color:var(--muted); font-size:13px; margin:0 4px 8px; }
+.note { color:var(--muted); font-size:14px; margin:12px 4px 0; }
+/* interaction */
+.node { cursor:pointer; outline:none; }
+.node .box { transition: stroke-width .15s, filter .15s, opacity .15s; }
+.edge .line, .edge .elabel { transition: opacity .15s, stroke-width .15s; }
+svg.focusing .node:not(.near):not(.frame), svg.focusing .edge:not(.lit) { opacity:.25; }
+.node, .edge { transition: opacity .15s; }
+.node.lit .box, .node:focus-visible .box { stroke-width:5; filter: drop-shadow(0 0 10px rgba(46,109,164,.55)); }
+.frame.lit .box { stroke:#2e6da4; }
+.edge.lit .line { stroke-width:5.5; }
+.node.selected .box { stroke-width:6; }
+/* infobox */
+.info { position:absolute; z-index:5; width:min(380px, calc(100% - 24px)); background:var(--card); color:var(--text);
+  border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow); padding:14px 16px 12px; font-size:14.5px; line-height:1.45; }
+.info[hidden] { display:none; }
+.info-head { display:flex; align-items:flex-start; gap:10px; }
+.info h2 { margin:0; font-size:17px; }
+.info .sub { color:var(--muted); font-size:13px; margin-top:2px; }
+.info .chip { margin-left:auto; flex:none; font-size:12px; font-weight:700; padding:3px 9px; border-radius:999px; }
+.chip.server { background:#e6eef8; color:#2e5f91; }
+.chip.kunde { background:#eef0f3; color:#4b5563; }
+.chip.nutzer { background:#e3f2e8; color:#2f6b42; }
+.info ul { margin:10px 0 0; padding-left:18px; }
+.info li { margin:4px 0; }
+.info .close { border:0; background:transparent; color:var(--muted); font-size:20px; line-height:1; cursor:pointer; padding:0 2px; }
+@media (max-width: 700px) {
+  .info { position:fixed; left:12px !important; right:12px; bottom:12px; top:auto !important; width:auto; max-height:55vh; overflow:auto; }
+}
+</style>
+</head>
+<body>
+<main>
+  <p class="hint-mobile">Grafik seitlich verschieben · Bereiche antippen für Details</p>
+  <div class="diagram" id="diagram">
+    <div class="scroller">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1150" width="2000" height="1150" font-family="DejaVu Sans, 'Segoe UI', Arial, sans-serif" role="img" aria-label="Attentio Systemübersicht">
+<defs>
+<marker id="arrow-video" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e6da4"/></marker>
+<marker id="arrow-meta" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a7d4f"/></marker>
+<marker id="arrow-user" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker>
+</defs>
+<rect width="2000" height="1150" fill="#ffffff"/>
+<text x="45" y="62" font-size="40" fill="#1f3a5f" font-weight="bold" text-anchor="start">Attentio — Systemübersicht</text>
+<text x="45" y="98" font-size="21" fill="#5b6472" font-weight="normal" text-anchor="start">KI-gestützte Personenerkennung · vollständig lokal beim Kunden</text>
+<text x="1955" y="62" font-size="22" fill="#6b7280" font-weight="bold" text-anchor="end">MABJA Solutions GmbH</text>
+<g class="node frame" data-id="network" tabindex="0" role="button" aria-label="Kundenumgebung"><rect class="box" x="25" y="125" width="1950" height="915" rx="20" fill="none" stroke="#b8c1cf" stroke-width="2.5" stroke-dasharray="12 9"/><text x="55" y="165" font-size="22" fill="#5b6472" font-weight="bold" text-anchor="start">Kundenumgebung · lokal</text></g>
+<text x="235" y="220" font-size="23" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Netzwerkkameras</text>
+<text x="235" y="568" font-size="30" fill="#2e6da4" font-weight="bold" text-anchor="middle">⋮</text>
+<g class="node frame" data-id="server" tabindex="0" role="button" aria-label="Attentio-Server"><rect class="box" x="505" y="150" width="1155" height="840" rx="18" fill="#f7f9fb" stroke="#1f3a5f" stroke-width="2.5"/><text x="530" y="192" font-size="28" fill="#1f3a5f" font-weight="bold" text-anchor="start">Attentio-Server</text><text x="1635" y="192" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="end">Edge-Server mit KI-Beschleuniger · Container</text></g>
+<g class="edge" data-id="e0" data-a="cam1" data-b="hub">
+<path d="M400,312 H460 V320 H539" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M400,312 H460 V320 H539" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+</g>
+<g class="edge" data-id="e1" data-a="cam2" data-b="hub">
+<path d="M400,467 H470 V355 H539" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M400,467 H470 V355 H539" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+</g>
+<g class="edge" data-id="e2" data-a="camn" data-b="hub">
+<path d="M400,647 H480 V390 H539" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M400,647 H480 V390 H539" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="425" y="745" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Videostreams</text>
+</g>
+<g class="edge" data-id="e3" data-a="hub" data-b="ai">
+<path d="M845,320 H939" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M845,320 H939" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="895" y="308" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Video</text>
+</g>
+<g class="edge" data-id="e4" data-a="ai" data-b="hub">
+<path d="M945,395 H851" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M945,395 H851" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="895" y="422" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">annotiert</text>
+</g>
+<g class="edge" data-id="e5" data-a="hub" data-b="dashboard">
+<path d="M695,265 V228 H1475 V259" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M695,265 V228 H1475 V259" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="1085" y="218" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Annotierter Livestream</text>
+</g>
+<g class="edge" data-id="e6" data-a="ai" data-b="opcua">
+<path d="M1095,445 V524" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1095,445 V524" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
+<text class="elabel" x="1107" y="492" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Metadaten</text>
+</g>
+<g class="edge" data-id="e7" data-a="opcua" data-b="dashboard">
+<path d="M1245,612 H1324" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1245,612 H1324" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
+<text class="elabel" x="1287" y="600" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Live</text>
+</g>
+<g class="edge" data-id="e8" data-a="opcua" data-b="db">
+<path d="M1095,695 V774" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1095,695 V774" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
+<text class="elabel" x="1107" y="742" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="start" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Protokollierung</text>
+</g>
+<g class="edge" data-id="e9" data-a="db" data-b="dashboard">
+<path d="M1245,862 H1324" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1245,862 H1324" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
+<text class="elabel" x="1287" y="850" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Verlauf</text>
+</g>
+<g class="edge" data-id="e10" data-a="dashboard" data-b="staff">
+<path d="M1620,570 H1739" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1620,570 H1739" fill="none" stroke="#1f3a5f" stroke-width="3.5" marker-end="url(#arrow-user)"/>
+<text class="elabel" x="1682" y="556" font-size="16" fill="#1f3a5f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Warnungen</text>
+</g>
+<g class="edge" data-id="e11" data-a="staff" data-b="dashboard">
+<path d="M1745,650 H1626" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1745,650 H1626" fill="none" stroke="#1f3a5f" stroke-width="3.5" marker-end="url(#arrow-user)"/>
+<text class="elabel" x="1685" y="678" font-size="16" fill="#1f3a5f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#ffffff" stroke-width="6" stroke-linejoin="round">Einstellungen</text>
+</g>
+<g class="node" data-id="cam1" tabindex="0" role="button" aria-label="Kamera 1">
+<rect class="box" x="70" y="250" width="330" height="125" rx="14" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
+<g fill="none" stroke="#2e6da4" stroke-width="3" stroke-linejoin="round"><rect x="102" y="297.5" width="38" height="30" rx="5"/><path d="M140,306.5 L155,297.5 V327.5 L140,318.5"/><circle cx="121" cy="312.5" r="7"/></g>
+<text x="182" y="307" font-size="26" fill="#1f3a5f" font-weight="bold" text-anchor="start">Kamera 1</text>
+<text x="182" y="340" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">z. B. Eingang</text>
+</g>
+<g class="node" data-id="cam2" tabindex="0" role="button" aria-label="Kamera 2">
+<rect class="box" x="70" y="405" width="330" height="125" rx="14" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
+<g fill="none" stroke="#2e6da4" stroke-width="3" stroke-linejoin="round"><rect x="102" y="452.5" width="38" height="30" rx="5"/><path d="M140,461.5 L155,452.5 V482.5 L140,473.5"/><circle cx="121" cy="467.5" r="7"/></g>
+<text x="182" y="462" font-size="26" fill="#1f3a5f" font-weight="bold" text-anchor="start">Kamera 2</text>
+<text x="182" y="495" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">z. B. Serverraum</text>
+</g>
+<g class="node" data-id="camn" tabindex="0" role="button" aria-label="Kamera n">
+<rect class="box" x="70" y="585" width="330" height="125" rx="14" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
+<g fill="none" stroke="#2e6da4" stroke-width="3" stroke-linejoin="round"><rect x="102" y="632.5" width="38" height="30" rx="5"/><path d="M140,641.5 L155,632.5 V662.5 L140,653.5"/><circle cx="121" cy="647.5" r="7"/></g>
+<text x="182" y="642" font-size="26" fill="#1f3a5f" font-weight="bold" text-anchor="start">Kamera n</text>
+<text x="182" y="675" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">beliebig erweiterbar</text>
+</g>
+<g class="node" data-id="hub" tabindex="0" role="button" aria-label="Video-Hub">
+<rect class="box" x="545" y="265" width="300" height="180" rx="14" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
+<text x="695.0" y="315" font-size="27" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Video-Hub</text>
+<text x="695.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">empfängt alle Streams</text>
+<text x="695.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">verteilt Original &amp;</text>
+<text x="695.0" y="413" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">annotiertes Bild</text>
+</g>
+<g class="node" data-id="ai" tabindex="0" role="button" aria-label="KI-Analyse">
+<rect class="box" x="945" y="265" width="300" height="180" rx="14" fill="#fcf1df" stroke="#b7791f" stroke-width="2.5"/>
+<text x="1095.0" y="315" font-size="27" fill="#b7791f" font-weight="bold" text-anchor="middle">KI-Analyse</text>
+<text x="1095.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Personenerkennung</text>
+<text x="1095.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">&amp; Tracking</text>
+<text x="1095.0" y="413" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">KI-Beschleuniger</text>
+</g>
+<g class="node" data-id="opcua" tabindex="0" role="button" aria-label="OPC-UA-Server">
+<rect class="box" x="945" y="530" width="300" height="165" rx="14" fill="#e8f3ec" stroke="#3a7d4f" stroke-width="2.5"/>
+<text x="1095.0" y="580" font-size="27" fill="#3a7d4f" font-weight="bold" text-anchor="middle">OPC-UA-Server</text>
+<text x="1095.0" y="622" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Metadaten je Kamera</text>
+<text x="1095.0" y="650" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Personen · Status · Zeit</text>
+</g>
+<g class="node" data-id="db" tabindex="0" role="button" aria-label="Datenbank">
+<rect class="box" x="945" y="780" width="300" height="165" rx="14" fill="#e8f3ec" stroke="#3a7d4f" stroke-width="2.5"/>
+<text x="1095.0" y="830" font-size="27" fill="#3a7d4f" font-weight="bold" text-anchor="middle">Datenbank</text>
+<text x="1095.0" y="872" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">leichtgewichtig</text>
+<text x="1095.0" y="900" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Protokoll je Kamera</text>
+</g>
+<g class="node" data-id="dashboard" tabindex="0" role="button" aria-label="Dashboard">
+<rect class="box" x="1330" y="265" width="290" height="680" rx="14" fill="#e8eef6" stroke="#1f3a5f" stroke-width="2.5"/>
+<text x="1475.0" y="315" font-size="27" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Dashboard</text>
+<text x="1475.0" y="357" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Live-Übersicht</text>
+<text x="1475.0" y="385" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">aller Kameras</text>
+<text x="1475.0" y="453" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Annotiertes</text>
+<text x="1475.0" y="481" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Livebild</text>
+<text x="1475.0" y="549" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Konfigurierbare</text>
+<text x="1475.0" y="577" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Warnungen</text>
+<text x="1475.0" y="645" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Verlauf je Kamera</text>
+<text x="1475.0" y="713" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Einstellungen</text>
+<text x="1475.0" y="781" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Anmeldung &amp; Rechte</text>
+</g>
+<g class="node" data-id="privacy" tabindex="0" role="button" aria-label="Datenschutz">
+<rect class="box" x="545" y="530" width="300" height="415" rx="14" fill="#ffffff" stroke="#b8c1cf" stroke-width="2.5"/>
+<text x="695.0" y="580" font-size="27" fill="#4b5563" font-weight="bold" text-anchor="middle">Datenschutz</text>
+<text x="695.0" y="622" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">vollständig lokal</text>
+<text x="695.0" y="694" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">keine Bildaufzeichnung</text>
+<text x="695.0" y="766" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">keine Identifizierung</text>
+<text x="695.0" y="838" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">nur anonyme</text>
+<text x="695.0" y="866" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">Metadaten</text>
+</g>
+<g class="node" data-id="staff" tabindex="0" role="button" aria-label="Personal">
+<rect class="box" x="1745" y="505" width="200" height="200" rx="14" fill="#ffffff" stroke="#1f3a5f" stroke-width="2.5"/>
+<g fill="none" stroke="#1f3a5f" stroke-width="3"><circle cx="1845.0" cy="551" r="11"/><path d="M1823.0,585 C1823.0,565 1867.0,565 1867.0,585"/></g>
+<text x="1845.0" y="627" font-size="25" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Personal</text>
+<text x="1845.0" y="659" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="middle">autorisiert</text>
+<text x="1845.0" y="685" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="middle">Browser</text>
+</g>
+<line x1="505" y1="1092" x2="575" y2="1092" stroke="#2e6da4" stroke-width="4"/>
+<text x="590" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Video</text>
+<line x1="755" y1="1092" x2="825" y2="1092" stroke="#3a7d4f" stroke-width="4"/>
+<text x="840" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Metadaten</text>
+<line x1="1005" y1="1092" x2="1075" y2="1092" stroke="#1f3a5f" stroke-width="4"/>
+<text x="1090" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Bedienung</text>
+<rect x="1255" y="1079" width="30" height="26" rx="4" fill="#fcf1df" stroke="#b7791f" stroke-width="2"/>
+<text x="1300" y="1099" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">KI-Inferenz</text>
+<text x="45" y="1099" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="start" font-style="italic">Bereiche anklicken für Details</text>
+</svg>
+    </div>
+    <div class="info" id="info" hidden role="dialog" aria-live="polite">
+      <div class="info-head"><div><h2 id="info-title"></h2><div class="sub" id="info-sub"></div></div>
+        <span class="chip" id="info-chip"></span><button class="close" id="info-close" aria-label="Schließen">×</button></div>
+      <ul id="info-list"></ul>
+    </div>
+  </div>
+  <p class="note">MABJA Solutions GmbH · Projekt „Serverraumüberwachung (Kamera &amp; Raspberry Pi)“ · Produkt Attentio. Bereiche überfahren zum Hervorheben, anklicken für Details.</p>
+</main>
+<script>
+const INFO = {"cam1": {"sub": "Netzwerkkamera", "items": ["Beliebig viele handelsübliche Netzwerkkameras (IP-Kameras) im Netz des Kunden; vorhandene Kameras lassen sich weiter nutzen.", "Jede Kamera schickt ihren Videostream (RTSP, H.264) über das lokale Netz an den Attentio-Server.", "Neue Kameras werden automatisch erkannt; Ausrichtung und Bildgröße sind je Kamera im Dashboard einstellbar."]}, "cam2": {"sub": "Netzwerkkamera", "items": ["Beliebig viele handelsübliche Netzwerkkameras (IP-Kameras) im Netz des Kunden; vorhandene Kameras lassen sich weiter nutzen.", "Jede Kamera schickt ihren Videostream (RTSP, H.264) über das lokale Netz an den Attentio-Server.", "Neue Kameras werden automatisch erkannt; Ausrichtung und Bildgröße sind je Kamera im Dashboard einstellbar."]}, "camn": {"sub": "Netzwerkkamera", "items": ["Beliebig viele handelsübliche Netzwerkkameras (IP-Kameras) im Netz des Kunden; vorhandene Kameras lassen sich weiter nutzen.", "Jede Kamera schickt ihren Videostream (RTSP, H.264) über das lokale Netz an den Attentio-Server.", "Neue Kameras werden automatisch erkannt; Ausrichtung und Bildgröße sind je Kamera im Dashboard einstellbar."]}, "hub": {"sub": "Container · Stream-Verteilung", "items": ["Zentrale Annahmestelle für alle Kamerastreams; jede Kamera hat einen eigenen Kanal.", "Leitet das Originalbild an die KI-Analyse weiter und stellt das annotierte Bild für das Dashboard bereit.", "Zugriff nur mit Zugangsdaten je Rolle: Kameras dürfen nur senden, die Analyse nur ihre Ergebnisse veröffentlichen."]}, "ai": {"sub": "Container · Personenerkennung", "items": ["Erkennt Personen in Echtzeit mit einem KI-Beschleuniger direkt im Server; keine Cloud nötig.", "Tracking hält jede Person über die Bildfolge mit derselben Markierung, ohne sie zu identifizieren.", "Erzeugt je Kamera das annotierte Bild (Markierungen) und die Metadaten.", "Mehrere Kameras parallel, jede in ihrem eigenen Prozess; fällt einer aus, laufen die anderen weiter."]}, "opcua": {"sub": "Container · Schnittstelle", "items": ["Stellt die Metadaten über OPC UA bereit, einen offenen Industriestandard.", "Je Kamera, einmal pro Sekunde: Anzahl Personen, Kamera aktiv, Zeitstempel.", "Dashboard und Datenbank lesen hier; auch vorhandene Leit- oder Gebäudesysteme können sich anbinden."]}, "db": {"sub": "Container · Protokoll", "items": ["Leichtgewichtige Datenbank, die alle Metadaten je Kamera mitschreibt.", "Gespeichert werden nur Zahlen und Zustände (Zeit, Personenanzahl, Erkennung, Kamerastatus), keine Bilder.", "Aufbewahrungsdauer einstellbar; im Dashboard als Verlauf je Kamera abrufbar."]}, "dashboard": {"sub": "Container · Weboberfläche", "items": ["Zugang nur für autorisiertes Personal, mit Anmeldung und Rechten je Rolle.", "Live-Übersicht aller Kameras: Status, Anzahl Personen, annotiertes Livebild.", "Konfigurierbare Warnungen, z. B. Person außerhalb erlaubter Zeiten oder Kamera ausgefallen.", "Verlauf je Kamera aus der Datenbank; individuelle Einstellungen für Kameras und Anzeige."]}, "privacy": {"sub": "Privacy by Design", "items": ["Das gesamte System läuft lokal beim Kunden; keine Cloud, keine Daten außer Haus.", "Videobilder werden nur flüchtig im Arbeitsspeicher verarbeitet und nicht aufgezeichnet.", "Keine Identifizierung von Personen; gespeichert werden nur anonyme Metadaten.", "Einsicht nur für autorisiertes Personal."]}, "staff": {"sub": "Nutzer", "items": ["Sicherheits- oder Betriebspersonal mit Berechtigung.", "Zugriff per Browser im lokalen Netz: am Leitstand, am Arbeitsplatz oder mobil.", "Erhält Warnungen sofort und passt Einstellungen im Rahmen seiner Rechte an."]}, "network": {"sub": "Lokales Netzwerk", "items": ["Kameras, Server und Dashboard befinden sich vollständig im Netz des Kunden.", "Keine Internetverbindung nötig: Videos und Daten verlassen das Gebäude nicht.", "Edge Computing: Die KI-Auswertung findet dort statt, wo die Bilder entstehen."]}, "server": {"sub": "Edge-Server", "items": ["Kompakter Server mit KI-Beschleuniger beim Kunden vor Ort.", "Alle Dienste laufen als einzelne Container: getrennt, einzeln aktualisierbar und erweiterbar.", "Liefert annotierte Streams und Metadaten an Dashboard und Datenbank."]}};
+const TITLES = {"cam1": "Kamera 1", "cam2": "Kamera 2", "camn": "Weitere Kameras", "hub": "Video-Hub", "ai": "KI-Analyse", "opcua": "OPC-UA-Server", "db": "Datenbank", "dashboard": "Dashboard", "privacy": "Datenschutz", "staff": "Personal", "network": "Kundenumgebung", "server": "Attentio-Server"};
+const STATUS = {"cam1": "kunde", "cam2": "kunde", "camn": "kunde", "hub": "server", "ai": "server", "opcua": "server", "db": "server", "dashboard": "server", "privacy": "server", "staff": "nutzer", "network": "kunde", "server": "server"};
+const CHIP = { kunde: 'Kundenumgebung', server: 'Attentio-Server', nutzer: 'Nutzer' };
+const svg = document.querySelector('#diagram svg');
+const diagram = document.getElementById('diagram');
+const box = document.getElementById('info');
+const edges = [...svg.querySelectorAll('.edge')];
+const nodes = [...svg.querySelectorAll('.node')];
+let selected = null;
+
+function light(id) {
+  // Hovered element highlighted, its direct neighbours and connections kept
+  // visible, everything else dimmed. The network frame highlights alone.
+  svg.classList.toggle('focusing', Boolean(id) && id !== 'network' && id !== 'server');
+  const near = new Set([id]);
+  for (const e of edges) {
+    const on = Boolean(id) && (e.dataset.a === id || e.dataset.b === id);
+    e.classList.toggle('lit', on);
+    if (on) { near.add(e.dataset.a); near.add(e.dataset.b); }
+  }
+  for (const n of nodes) {
+    n.classList.toggle('lit', n.dataset.id === id);
+    n.classList.toggle('near', near.has(n.dataset.id));
+  }
+}
+
+function open(id, clientX, clientY) {
+  const d = INFO[id];
+  if (!d) return;
+  selected = id;
+  for (const n of nodes) n.classList.toggle('selected', n.dataset.id === id);
+  document.getElementById('info-title').textContent = TITLES[id];
+  document.getElementById('info-sub').textContent = d.sub;
+  const chip = document.getElementById('info-chip');
+  chip.textContent = CHIP[STATUS[id]];
+  chip.className = 'chip ' + STATUS[id];
+  document.getElementById('info-list').replaceChildren(...d.items.map((t) => {
+    const li = document.createElement('li'); li.textContent = t; return li;
+  }));
+  box.hidden = false;
+  const r = diagram.getBoundingClientRect();
+  const bw = box.offsetWidth, bh = box.offsetHeight;
+  let x = clientX - r.left + 16, y = clientY - r.top + 16;
+  if (x + bw > r.width - 8) x = Math.max(8, clientX - r.left - bw - 16);
+  if (x < 8) x = 8;
+  if (y + bh > r.height - 8) y = Math.max(8, r.height - bh - 8);
+  box.style.left = x + 'px';
+  box.style.top = y + 'px';
+  light(id);
+}
+
+function close() {
+  box.hidden = true;
+  selected = null;
+  for (const n of nodes) n.classList.remove('selected');
+  light(null);
+}
+
+for (const n of nodes) {
+  n.addEventListener('mouseenter', () => { if (!selected) light(n.dataset.id); });
+  n.addEventListener('mouseleave', () => { if (!selected) light(null); });
+  n.addEventListener('click', (ev) => { ev.stopPropagation(); open(n.dataset.id, ev.clientX, ev.clientY); });
+  n.addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    ev.preventDefault();
+    const b = n.getBoundingClientRect();
+    open(n.dataset.id, b.left + b.width / 2, b.top + b.height / 2);
+  });
+  n.addEventListener('focus', () => { if (!selected) light(n.dataset.id); });
+  n.addEventListener('blur', () => { if (!selected) light(null); });
+}
+for (const e of edges) {
+  e.addEventListener('mouseenter', () => { if (!selected) light(e.dataset.a); });
+  e.addEventListener('mouseleave', () => { if (!selected) light(null); });
+}
+document.getElementById('info-close').addEventListener('click', close);
+box.addEventListener('click', (ev) => ev.stopPropagation());
+document.addEventListener('click', close);
+document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
+</script>
+</body>
+</html>
