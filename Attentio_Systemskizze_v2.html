@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attentio Systemskizze</title>
+<style>
+:root { --bg:#eef2f6; --card:#ffffff; --text:#1f2933; --muted:#5b6472; --border:#d7dde5; --accent:#2e6da4; --shadow:0 10px 30px rgba(15,30,50,.18); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0f141b; --card:#1a222d; --text:#e6ebf1; --muted:#9aa6b4; --border:#2c3746; --accent:#6aa5dc; --shadow:0 10px 30px rgba(0,0,0,.5); } }
+:root[data-theme="dark"] { --bg:#0f141b; --card:#1a222d; --text:#e6ebf1; --muted:#9aa6b4; --border:#2c3746; --accent:#6aa5dc; --shadow:0 10px 30px rgba(0,0,0,.5); }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family: DejaVu Sans, "Segoe UI", system-ui, Arial, sans-serif; }
+main { max-width:1500px; margin:0 auto; padding:24px 16px 40px; }
+.diagram { position:relative; background:#fff; border-radius:14px; box-shadow:var(--shadow); overflow:hidden; }
+.scroller { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.diagram svg { display:block; width:100%; height:auto; }
+@media (max-width: 900px) { .diagram svg { min-width:1100px; } .hint-mobile { display:block; } }
+.hint-mobile { display:none; color:var(--muted); font-size:13px; margin:0 4px 8px; }
+.note { color:var(--muted); font-size:14px; margin:12px 4px 0; }
+/* interaction */
+.node { cursor:pointer; outline:none; }
+.node .box { transition: stroke-width .15s, filter .15s, opacity .15s; }
+.edge .line, .edge .elabel { transition: opacity .15s, stroke-width .15s; }
+svg.focusing .node:not(.near):not(.frame), svg.focusing .edge:not(.lit) { opacity:.25; }
+.node, .edge { transition: opacity .15s; }
+.node.lit .box, .node:focus-visible .box { stroke-width:5; filter: drop-shadow(0 0 10px rgba(46,109,164,.55)); }
+.frame.lit .box { stroke:#2e6da4; }
+.edge.lit .line { stroke-width:5.5; }
+.node.selected .box { stroke-width:6; }
+/* infobox */
+.info { position:absolute; z-index:5; width:min(380px, calc(100% - 24px)); background:var(--card); color:var(--text);
+  border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow); padding:14px 16px 12px; font-size:14.5px; line-height:1.45; }
+.info[hidden] { display:none; }
+.info-head { display:flex; align-items:flex-start; gap:10px; }
+.info h2 { margin:0; font-size:17px; }
+.info .sub { color:var(--muted); font-size:13px; margin-top:2px; }
+.info .chip { margin-left:auto; flex:none; font-size:12px; font-weight:700; padding:3px 9px; border-radius:999px; }
+.chip.aktiv { background:#e3f2e8; color:#2f6b42; }
+.chip.geplant, .chip.vorgesehen { background:#fff1db; color:#8a5a12; }
+.chip.planung { background:#e6eef8; color:#2e5f91; }
+.info ul { margin:10px 0 0; padding-left:18px; }
+.info li { margin:4px 0; }
+.info .close { border:0; background:transparent; color:var(--muted); font-size:20px; line-height:1; cursor:pointer; padding:0 2px; }
+@media (max-width: 700px) {
+  .info { position:fixed; left:12px !important; right:12px; bottom:12px; top:auto !important; width:auto; max-height:55vh; overflow:auto; }
+}
+</style>
+</head>
+<body>
+<main>
+  <p class="hint-mobile">Grafik seitlich verschieben · Bereiche antippen für Details</p>
+  <div class="diagram" id="diagram">
+    <div class="scroller">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1250" width="2000" height="1250" font-family="DejaVu Sans, 'Segoe UI', Arial, sans-serif" role="img" aria-label="Attentio Zielsystem, Skizze">
+<defs>
+<marker id="arrow-video" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e6da4"/></marker>
+<marker id="arrow-meta" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a7d4f"/></marker>
+<marker id="arrow-infer" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker>
+<marker id="arrow-nav" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker>
+</defs>
+<rect width="2000" height="1250" fill="#ffffff"/>
+<text x="45" y="62" font-size="40" fill="#1f3a5f" font-weight="bold" text-anchor="start">Attentio — Zielsystem (Skizze)</text>
+<text x="45" y="98" font-size="21" fill="#5b6472" font-weight="normal" text-anchor="start">Stand 12.11.2026 · vollständig lokal im Schulnetz (Planungsstand)</text>
+<text x="1955" y="62" font-size="22" fill="#6b7280" font-weight="bold" text-anchor="end">MABJA Solutions GmbH</text>
+<g class="node frame" data-id="network" tabindex="0" role="button" aria-label="Schulnetz (lokal)"><rect class="box" x="25" y="120" width="1950" height="1010" rx="18" fill="none" stroke="#b8c1cf" stroke-width="2.5" stroke-dasharray="12 9"/><text x="70" y="1085" font-size="21" fill="#5b6472" font-weight="bold" text-anchor="start" font-style="italic">Schulnetz (lokal)</text><text x="70" y="1112" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start" font-style="italic">kein VPN · keine Dienste nach außen</text></g>
+<rect x="560" y="140" width="1370" height="950" rx="16" fill="#f7f9fb" stroke="#1f3a5f" stroke-width="2.5"/>
+<text x="1245" y="182" font-size="30" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Raspberry Pi 5 + Hailo-8L AI HAT+ (13 TOPS)</text>
+<text x="1245" y="214" font-size="20" fill="#5b6472" font-weight="normal" text-anchor="middle">einziger Rechner · steht vor Ort, z. B. im Serverraum</text>
+<rect x="1084" y="235" width="821" height="315" rx="14" fill="none" stroke="#b7791f" stroke-width="2" stroke-dasharray="4 6"/>
+<text x="1100" y="270" font-size="22" fill="#b7791f" font-weight="bold" text-anchor="start">Tracker</text>
+<text x="270" y="175" font-size="24" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Kameras</text>
+<g class="edge" data-id="e_sensor" data-a="k_sensor" data-b="mediamtx">
+<path d="M470,270 H520 V290 H604" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M470,270 H520 V290 H604" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="492" y="258" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">RTSP</text>
+</g>
+<g class="edge" data-id="e_net" data-a="k_net" data-b="mediamtx">
+<path d="M470,460 H535 V350 H604" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M470,460 H535 V350 H604" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="500" y="482" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">RTSP</text>
+</g>
+<g class="edge" data-id="e_browser" data-a="k_browser" data-b="mediamtx">
+<path d="M470,650 H550 V410 H604" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M470,650 H550 V410 H604" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="508" y="674" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">WebRTC</text>
+</g>
+<g class="edge" data-id="e_src" data-a="mediamtx" data-b="proc_cam">
+<path d="M970,340 H1089" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M970,340 H1089" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="1032" y="328" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">/source</text>
+</g>
+<g class="edge" data-id="e_ann" data-a="proc_cam" data-b="mediamtx">
+<path d="M1095,420 H976" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1095,420 H976" fill="none" stroke="#2e6da4" stroke-width="3.5" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="1032" y="446" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">/annotated</text>
+</g>
+<g class="edge" data-id="e_infer" data-a="proc_cam" data-b="proc_main">
+<path d="M1455,380 H1514" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1455,380 H1514" fill="none" stroke="#b7791f" stroke-width="3.5" marker-end="url(#arrow-infer)"/>
+<text class="elabel" x="1487" y="368" font-size="16" fill="#b7791f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">Bild</text>
+</g>
+<g class="edge" data-id="e_tracks" data-a="proc_main" data-b="proc_cam">
+<path d="M1520,445 H1461" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1520,445 H1461" fill="none" stroke="#b7791f" stroke-width="3.5" marker-end="url(#arrow-infer)"/>
+<text class="elabel" x="1488" y="470" font-size="16" fill="#b7791f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">Tracks</text>
+</g>
+<g class="edge" data-id="e_state" data-a="proc_cam" data-b="opcua_srv">
+<path d="M1275,530 V575 H1700 V614" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1275,530 V575 H1700 V614" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
+<text class="elabel" x="1490" y="565" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">Status je Kamera</text>
+</g>
+<g class="edge" data-id="e_preview" data-a="mediamtx" data-b="dashboard">
+<path d="M790,460 V554" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M790,460 V554" fill="none" stroke="#2e6da4" stroke-width="3.5" stroke-dasharray="9 7" marker-end="url(#arrow-video)"/>
+<text class="elabel" x="802" y="513" font-size="16" fill="#2e6da4" font-weight="bold" text-anchor="start" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">Live-Bild</text>
+</g>
+<g class="edge" data-id="e_opc_dash" data-a="opcua_srv" data-b="dashboard">
+<path d="M1520,640 H1040 V620 H976" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1520,640 H1040 V620 H976" fill="none" stroke="#3a7d4f" stroke-width="3.5" marker-end="url(#arrow-meta)"/>
+<text class="elabel" x="1250" y="630" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">OPC UA · 1 Hz</text>
+</g>
+<g class="edge" data-id="e_opc_client" data-a="opcua_srv" data-b="opcua_client">
+<path d="M1520,725 H1461" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1520,725 H1461" fill="none" stroke="#3a7d4f" stroke-width="3.5" stroke-dasharray="9 7" marker-end="url(#arrow-meta)"/>
+<text class="elabel" x="1488" y="713" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">1 Hz</text>
+</g>
+<g class="edge" data-id="e_client_db" data-a="opcua_client" data-b="db">
+<path d="M1275,790 V844" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1275,790 V844" fill="none" stroke="#3a7d4f" stroke-width="3.5" stroke-dasharray="9 7" marker-end="url(#arrow-meta)"/>
+</g>
+<g class="edge" data-id="e_db_dash" data-a="db" data-b="dashboard">
+<path d="M1095,945 H1030 V820 H976" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M1095,945 H1030 V820 H976" fill="none" stroke="#3a7d4f" stroke-width="3.5" stroke-dasharray="9 7" marker-end="url(#arrow-meta)"/>
+<text class="elabel" x="1032" y="972" font-size="16" fill="#3a7d4f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">Verlauf</text>
+</g>
+<g class="edge" data-id="e_staff" data-a="staff" data-b="dashboard">
+<path d="M470,985 H790 V896" fill="none" stroke="transparent" stroke-width="18"/>
+<path class="line" d="M470,985 H790 V896" fill="none" stroke="#1f3a5f" stroke-width="3.5" marker-end="url(#arrow-nav)"/>
+<text class="elabel" x="630" y="973" font-size="16" fill="#1f3a5f" font-weight="bold" text-anchor="middle" paint-order="stroke" stroke="#f7f9fb" stroke-width="6" stroke-linejoin="round">Browser</text>
+</g>
+<g class="node" data-id="k_sensor" tabindex="0" role="button" aria-label="Kamerasensor am Pi">
+<rect class="box" x="70" y="190" width="400" height="160" rx="12" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
+<text x="270.0" y="234" font-size="25" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Kamerasensor am Pi</text>
+<text x="270.0" y="270" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">CSI-Modul oder USB</text>
+<text x="270.0" y="299" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">z. B. 1280×720 @ 15–30 fps</text>
+<text x="270.0" y="328" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">H.264 per Software (x264)</text>
+</g>
+<g class="node" data-id="k_net" tabindex="0" role="button" aria-label="Weitere Kameras">
+<rect class="box" x="70" y="380" width="400" height="160" rx="12" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
+<text x="270.0" y="424" font-size="25" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Weitere Kameras</text>
+<text x="270.0" y="460" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Netzwerkkamera oder Notebook</text>
+<text x="270.0" y="489" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">RTSP-Push, H.264</text>
+<text x="270.0" y="518" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">cams/&lt;id&gt;/source</text>
+</g>
+<g class="node" data-id="k_browser" tabindex="0" role="button" aria-label="Browser-Kamera">
+<rect class="box" x="70" y="570" width="400" height="160" rx="12" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
+<text x="270.0" y="614" font-size="25" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Browser-Kamera</text>
+<text x="270.0" y="650" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Smartphone / Notebook</text>
+<text x="270.0" y="679" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">„Kamera senden“ im Dashboard</text>
+<text x="270.0" y="708" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">WebRTC (WHIP)</text>
+</g>
+<g class="node" data-id="mediamtx" tabindex="0" role="button" aria-label="MediaMTX">
+<rect class="box" x="610" y="235" width="360" height="225" rx="12" fill="#ffffff" stroke="#2e6da4" stroke-width="2.5"/>
+<text x="790.0" y="279" font-size="25" fill="#1f3a5f" font-weight="bold" text-anchor="middle">MediaMTX</text>
+<text x="790.0" y="315" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">RTSP- &amp; WebRTC-Server</text>
+<text x="790.0" y="344" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">cams/&lt;id&gt;/source</text>
+<text x="790.0" y="373" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">cams/&lt;id&gt;/annotated</text>
+<text x="790.0" y="402" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Hauptkamera: /source · /annotated</text>
+</g>
+<g class="node" data-id="proc_cam" tabindex="0" role="button" aria-label="Kameraprozesse">
+<rect class="box" x="1095" y="295" width="360" height="235" rx="12" fill="#ffffff" stroke="#b7791f" stroke-width="2.5"/>
+<text x="1275.0" y="339" font-size="25" fill="#b7791f" font-weight="bold" text-anchor="middle">Kameraprozesse</text>
+<text x="1275.0" y="375" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">einer je Kamera</text>
+<text x="1275.0" y="404" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Dekodieren · Drehen/Skalieren</text>
+<text x="1275.0" y="433" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Letterbox · Overlay</text>
+<text x="1275.0" y="462" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">H.264-Kodierung</text>
+</g>
+<g class="node" data-id="proc_main" tabindex="0" role="button" aria-label="Hauptprozess">
+<rect class="box" x="1520" y="295" width="360" height="235" rx="12" fill="#fcf1df" stroke="#b7791f" stroke-width="2.5"/>
+<text x="1700.0" y="339" font-size="25" fill="#b7791f" font-weight="bold" text-anchor="middle">Hauptprozess</text>
+<text x="1700.0" y="375" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Hailo-8L: Personenerkennung</text>
+<text x="1700.0" y="404" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">YOLOv5s · ~64 Bilder/s</text>
+<text x="1700.0" y="433" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">ByteTrack + Haltezeit</text>
+<text x="1700.0" y="462" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">je Kamera</text>
+</g>
+<g class="node" data-id="dashboard" tabindex="0" role="button" aria-label="Dashboard">
+<rect class="box" x="610" y="560" width="360" height="330" rx="12" fill="#e8eef6" stroke="#1f3a5f" stroke-width="2.5"/>
+<text x="790.0" y="604" font-size="25" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Dashboard</text>
+<text x="790.0" y="640" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Übersicht aller Kameras</text>
+<text x="790.0" y="669" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Status · Personen · Live-Bild</text>
+<text x="790.0" y="698" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Einstellungen je Kamera</text>
+<text x="790.0" y="727" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Kamera senden</text>
+<text x="790.0" y="756" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle" font-style="italic">Verlauf &amp; Statistik (geplant)</text>
+<text x="790.0" y="785" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle" font-style="italic">Abgleich befugt/unbefugt (geplant)</text>
+</g>
+<g class="node" data-id="opcua_srv" tabindex="0" role="button" aria-label="OPC-UA-Server">
+<rect class="box" x="1520" y="620" width="360" height="180" rx="12" fill="#e8f3ec" stroke="#3a7d4f" stroke-width="2.5"/>
+<text x="1700.0" y="664" font-size="25" fill="#3a7d4f" font-weight="bold" text-anchor="middle">OPC-UA-Server</text>
+<text x="1700.0" y="700" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">PersonCount</text>
+<text x="1700.0" y="729" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">CameraConnected</text>
+<text x="1700.0" y="758" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Timestamp</text>
+<text x="1700.0" y="787" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">je Kamera · 1 Hz</text>
+</g>
+<g class="node" data-id="opcua_client" tabindex="0" role="button" aria-label="OPC-UA-Client">
+<rect class="box" x="1095" y="660" width="360" height="130" rx="12" fill="#e8f3ec" stroke="#3a7d4f" stroke-width="2.5" stroke-dasharray="10 7"/>
+<text x="1275.0" y="704" font-size="25" fill="#3a7d4f" font-weight="bold" text-anchor="middle">OPC-UA-Client</text>
+<rect x="1349" y="647" width="86" height="26" rx="13" fill="#ffffff" stroke="#3a7d4f" stroke-width="1.5"/>
+<text x="1392" y="666" font-size="15" fill="#3a7d4f" font-weight="bold" text-anchor="middle">geplant</text>
+<text x="1275.0" y="740" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">liest Metadaten, 1 Hz</text>
+<text x="1275.0" y="769" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">schreibt in die Datenbank</text>
+</g>
+<g class="node" data-id="db" tabindex="0" role="button" aria-label="Datenbank">
+<rect class="box" x="1095" y="850" width="360" height="190" rx="12" fill="#e8f3ec" stroke="#3a7d4f" stroke-width="2.5" stroke-dasharray="10 7"/>
+<text x="1275.0" y="894" font-size="25" fill="#3a7d4f" font-weight="bold" text-anchor="middle">Datenbank</text>
+<rect x="1349" y="837" width="86" height="26" rx="13" fill="#ffffff" stroke="#3a7d4f" stroke-width="1.5"/>
+<text x="1392" y="856" font-size="15" fill="#3a7d4f" font-weight="bold" text-anchor="middle">geplant</text>
+<text x="1275.0" y="930" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Timestamp · Kamera-ID</text>
+<text x="1275.0" y="959" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Anzahl Personen</text>
+<text x="1275.0" y="988" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Erkennung (bool)</text>
+<text x="1275.0" y="1017" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Kamerastatus</text>
+</g>
+<g class="node" data-id="privacy" tabindex="0" role="button" aria-label="Datenschutz durch Technik">
+<rect class="box" x="1520" y="860" width="360" height="180" rx="12" fill="#ffffff" stroke="#b8c1cf" stroke-width="2.5"/>
+<text x="1700.0" y="904" font-size="21" fill="#4b5563" font-weight="bold" text-anchor="middle">Datenschutz durch Technik</text>
+<text x="1700.0" y="940" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Bilder nur im Arbeitsspeicher</text>
+<text x="1700.0" y="969" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">keine Aufzeichnung</text>
+<text x="1700.0" y="998" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">keine Identifizierung</text>
+<text x="1700.0" y="1027" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">nur anonyme Metadaten</text>
+</g>
+<g class="node" data-id="staff" tabindex="0" role="button" aria-label="Sicherheitspersonal">
+<rect class="box" x="70" y="930" width="400" height="110" rx="12" fill="#ffffff" stroke="#6b7280" stroke-width="2.5"/>
+<text x="270.0" y="974" font-size="25" fill="#1f3a5f" font-weight="bold" text-anchor="middle">Sicherheitspersonal</text>
+<text x="270.0" y="1010" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="middle">Browser im Schulnetz / Leitstand</text>
+</g>
+<line x1="560" y1="1185" x2="630" y2="1185" stroke="#2e6da4" stroke-width="4"/>
+<text x="645" y="1192" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Video</text>
+<line x1="820" y1="1185" x2="890" y2="1185" stroke="#3a7d4f" stroke-width="4"/>
+<text x="905" y="1192" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">Metadaten</text>
+<line x1="1080" y1="1185" x2="1150" y2="1185" stroke="#3a7d4f" stroke-width="4" stroke-dasharray="9 7"/>
+<text x="1165" y="1192" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">geplant</text>
+<rect x="1340" y="1172" width="30" height="26" fill="#fcf1df" stroke="#b7791f" stroke-width="2"/>
+<text x="1385" y="1192" font-size="19" fill="#5b6472" font-weight="normal" text-anchor="start">KI-Inferenz (Hailo)</text>
+<text x="45" y="1192" font-size="18" fill="#5b6472" font-weight="normal" text-anchor="start" font-style="italic">Bereiche antippen oder anklicken für Details</text>
+</svg>
+    </div>
+    <div class="info" id="info" hidden role="dialog" aria-live="polite">
+      <div class="info-head"><div><h2 id="info-title"></h2><div class="sub" id="info-sub"></div></div>
+        <span class="chip" id="info-chip"></span><button class="close" id="info-close" aria-label="Schließen">×</button></div>
+      <ul id="info-list"></ul>
+    </div>
+  </div>
+  <p class="note">MABJA Solutions GmbH · Projekt „Serverraumüberwachung (Kamera &amp; Raspberry Pi)“ · Produkt Attentio. Bereiche überfahren zum Hervorheben, anklicken für Details.</p>
+</main>
+<script>
+const INFO = {"k_sensor": {"sub": "Erfassung vor Ort", "items": ["Kamera direkt am Pi 5 im Serverraum (CSI-Kameramodul oder USB-Kamera).", "Der Pi 5 hat keinen Hardware-Encoder: H.264 entsteht per Software (x264, ultrafast/zerolatency) oder kommt fertig von einer USB-Kamera mit H.264-Ausgabe.", "Sendet per RTSP an MediaMTX auf demselben Gerät (cams/<id>/source).", "Für die Zählung reichen 15 fps bei 720p; das halbiert die Dekodierlast gegenüber 30 fps."]}, "k_net": {"sub": "Weitere Kameras", "items": ["Jede Kamera sendet an ihren eigenen Pfad cams/<id>/source (RTSP über TCP, Port 8554); die Hauptkamera nutzt /source (ID „main“).", "Neue Kameras werden ohne Konfigurationsänderung erkannt und innerhalb von ~2 s verarbeitet; bis zu 4 gleichzeitig.", "Pro Kamera-ID sendet immer nur ein Gerät.", "Empfohlen: Bitratenbegrenzung und ein Keyframe pro Sekunde (-g 30)."]}, "k_browser": {"sub": "„Kamera senden“", "items": ["Ein Smartphone oder Notebook schickt seine Kamera direkt aus dem Browser, über das Dashboard (HTTPS).", "Übertragung per WebRTC (WHIP). Die Zugangsdaten bleiben auf dem Server.", "Die Kamera wird automatisch im Dashboard eingetragen.", "Browser pausieren die Kamera, wenn die Seite im Hintergrund ist oder der Bildschirm ausgeht."]}, "mediamtx": {"sub": "Video-Drehscheibe", "items": ["Nimmt alle Kamerastreams an und verteilt sie: an den Tracker, an das Dashboard und an Videoplayer (z. B. VLC).", "RTSP: Port 8554 (TCP). WebRTC: Port 8189 (UDP/TCP); Verbindungsaufbau (WHIP) nur lokal über das Dashboard.", "Eigene Zugangsdaten je Rolle: Kameras dürfen nur …/source senden, der Tracker nur …/annotated.", "Ohne VPN neu zu regeln: wer im Schulnetz die Streams ansehen darf."]}, "proc_cam": {"sub": "Tracker · Bildverarbeitung", "items": ["Ein eigener Prozess je Kamera: Dekodieren, Drehen und Skalieren (je Kamera einstellbar), Vorbereitung für das KI-Modell, Zeichnen der Boxen mit IDs, H.264-Kodierung des annotierten Streams.", "Schreibt je Kamera den aktuellen Stand (Anzahl, verbunden, Zeit) für den OPC-UA-Server.", "Stürzt ein Prozess ab, betrifft das nur diese Kamera; sie startet nach 10 s neu.", "Ohne Kamera wartet der Tracker sparsam (~30 MB) und lädt das Modell erst bei Bedarf."]}, "proc_main": {"sub": "Tracker · KI-Inferenz", "items": ["Besitzt als einziger Prozess den Hailo-8L (13 TOPS) und führt die Personenerkennung (YOLOv5s) für alle Kameras aus.", "ByteTrack vergibt stabile IDs je Kamera; 1 s Haltezeit gegen Flackern bei kurzen Verdeckungen.", "Bildübergabe über gemeinsamen Speicher, Ergebnis zurück per Pipe.", "Gemessen: ~64 Erkennungen/s gesamt; mit 3 Kameras je ~19 fps bei ~65 ms Verarbeitungszeit."]}, "dashboard": {"sub": "Weboberfläche", "items": ["In Betrieb: Übersicht aller Kameras mit Status, Personenzahl und Live-Bild; Einstellungen (Kameras, Drehung, Ausgabehöhe, Vorschau); automatische Kameraerkennung; „Kamera senden“.", "Liest den Status direkt per OPC UA (1 Hz); Live-Bilder entstehen nur, solange jemand zusieht.", "HTTP auf Port 8088, HTTPS auf 8443 (nötig für „Kamera senden“).", "Geplant: Verlauf & Statistik aus der Datenbank (Z2), Abgleich befugter/unbefugter Zutritte (Z3).", "Ohne VPN nötig: Anmeldung bzw. Zugriffsbeschränkung im Schulnetz."]}, "opcua_srv": {"sub": "Schnittstelle für Metadaten", "items": ["opc.tcp://<Pi>:4840/camera-tracker/, Namespace urn:camera-tracker.", "Je Kamera: Cameras.<id>.PersonCount, .CameraConnected, .Timestamp; die Hauptkamera zusätzlich unter PeopleTracking.*.", "Aktualisierung 1 Hz; nur der aktuelle Stand, keine Historie. Die Datenbank ist das Protokoll.", "CameraConnected = false bedeutet „nicht beobachtet“, nicht „niemand da“."]}, "opcua_client": {"sub": "Datenerfassung (Ziel Z2)", "items": ["Liest die Metadaten aller Kameras einmal pro Sekunde vom OPC-UA-Server.", "Läuft künftig auf demselben Pi wie alle anderen Dienste.", "Ersetzt den bisher geplanten Abruf über das VPN vom zweiten Pi."]}, "db": {"sub": "Protokoll (Ziel Z2)", "items": ["Speichert je Kamera: Zeitstempel, Anzahl Personen, Erkennung (ja/nein), Kamerastatus.", "Nur anonyme Zahlen, keine Bilder.", "Grundlage für Verlauf, Statistik und den Abgleich befugter/unbefugter Zutritte (Z3)."]}, "privacy": {"sub": "Privacy by Design", "items": ["Videobilder liegen nur im Arbeitsspeicher; es wird nichts aufgezeichnet.", "Keine Identifizierung von Personen (keine Wiedererkennung); gespeichert werden nur anonyme Metadaten.", "Alles bleibt im Schulnetz; es gibt keinen Dienst außerhalb.", "Mit dem Wegfall des VPN neu festzulegen: wer im Schulnetz auf Dashboard und Streams zugreifen darf. Mit der/dem Datenschutzbeauftragten der Schule abstimmen."]}, "staff": {"sub": "Nutzer", "items": ["Öffnet das Dashboard im Browser, am Leitstand oder mobil im Schulnetz.", "Sieht auf einen Blick: Person erkannt? Kamera funktionsfähig? Live-Bild mit Markierungen."]}, "network": {"sub": "Planungsstand 12.11.2026", "items": ["Neu: Die Schule stellt einen Raspberry Pi 5 mit Hailo AI HAT+ bereit; das ganze System läuft lokal auf diesem einen Gerät.", "Entfällt: Tailscale-VPN und der entfernte Analyse-Pi.", "Keine Verbindungen ins Internet und keine von außen erreichbaren Dienste.", "Wird angepasst, sobald die Ausstattung verbindlich zugesagt ist."]}};
+const TITLES = {"k_sensor": "Kamerasensor am Pi", "k_net": "Weitere Kameras", "k_browser": "Browser-Kamera", "mediamtx": "MediaMTX", "proc_cam": "Kameraprozesse", "proc_main": "Hauptprozess", "dashboard": "Dashboard", "opcua_srv": "OPC-UA-Server", "opcua_client": "OPC-UA-Client", "db": "Datenbank", "privacy": "Datenschutz durch Technik", "staff": "Sicherheitspersonal", "network": "Schulnetz (lokal)"};
+const STATUS = {"k_sensor": "vorgesehen", "k_net": "aktiv", "k_browser": "aktiv", "mediamtx": "aktiv", "proc_cam": "aktiv", "proc_main": "aktiv", "dashboard": "aktiv", "opcua_srv": "aktiv", "opcua_client": "geplant", "db": "geplant", "privacy": "aktiv", "staff": "aktiv", "network": "planung"};
+const CHIP = { aktiv: 'in Betrieb', geplant: 'geplant', vorgesehen: 'vorgesehen', planung: 'Planungsstand' };
+const svg = document.querySelector('#diagram svg');
+const diagram = document.getElementById('diagram');
+const box = document.getElementById('info');
+const edges = [...svg.querySelectorAll('.edge')];
+const nodes = [...svg.querySelectorAll('.node')];
+let selected = null;
+
+function light(id) {
+  // Hovered element highlighted, its direct neighbours and connections kept
+  // visible, everything else dimmed. The network frame highlights alone.
+  svg.classList.toggle('focusing', Boolean(id) && id !== 'network');
+  const near = new Set([id]);
+  for (const e of edges) {
+    const on = Boolean(id) && (e.dataset.a === id || e.dataset.b === id);
+    e.classList.toggle('lit', on);
+    if (on) { near.add(e.dataset.a); near.add(e.dataset.b); }
+  }
+  for (const n of nodes) {
+    n.classList.toggle('lit', n.dataset.id === id);
+    n.classList.toggle('near', near.has(n.dataset.id));
+  }
+}
+
+function open(id, clientX, clientY) {
+  const d = INFO[id];
+  if (!d) return;
+  selected = id;
+  for (const n of nodes) n.classList.toggle('selected', n.dataset.id === id);
+  document.getElementById('info-title').textContent = TITLES[id];
+  document.getElementById('info-sub').textContent = d.sub;
+  const chip = document.getElementById('info-chip');
+  chip.textContent = CHIP[STATUS[id]];
+  chip.className = 'chip ' + STATUS[id];
+  document.getElementById('info-list').replaceChildren(...d.items.map((t) => {
+    const li = document.createElement('li'); li.textContent = t; return li;
+  }));
+  box.hidden = false;
+  const r = diagram.getBoundingClientRect();
+  const bw = box.offsetWidth, bh = box.offsetHeight;
+  let x = clientX - r.left + 16, y = clientY - r.top + 16;
+  if (x + bw > r.width - 8) x = Math.max(8, clientX - r.left - bw - 16);
+  if (x < 8) x = 8;
+  if (y + bh > r.height - 8) y = Math.max(8, r.height - bh - 8);
+  box.style.left = x + 'px';
+  box.style.top = y + 'px';
+  light(id);
+}
+
+function close() {
+  box.hidden = true;
+  selected = null;
+  for (const n of nodes) n.classList.remove('selected');
+  light(null);
+}
+
+for (const n of nodes) {
+  n.addEventListener('mouseenter', () => { if (!selected) light(n.dataset.id); });
+  n.addEventListener('mouseleave', () => { if (!selected) light(null); });
+  n.addEventListener('click', (ev) => { ev.stopPropagation(); open(n.dataset.id, ev.clientX, ev.clientY); });
+  n.addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    ev.preventDefault();
+    const b = n.getBoundingClientRect();
+    open(n.dataset.id, b.left + b.width / 2, b.top + b.height / 2);
+  });
+  n.addEventListener('focus', () => { if (!selected) light(n.dataset.id); });
+  n.addEventListener('blur', () => { if (!selected) light(null); });
+}
+for (const e of edges) {
+  e.addEventListener('mouseenter', () => { if (!selected) light(e.dataset.a); });
+  e.addEventListener('mouseleave', () => { if (!selected) light(null); });
+}
+document.getElementById('info-close').addEventListener('click', close);
+box.addEventListener('click', (ev) => ev.stopPropagation());
+document.addEventListener('click', close);
+document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
+</script>
+</body>
+</html>
