@@ -1,11 +1,12 @@
 # Definition of Done
 
-| Unsere verbindlichen Qualitätskriterien | So prüfen und belegen wir sie |
-|---|---|
-|System funktionell| Es werden Keine Fehler oder Warnungen gemeldet und alle Services sind erreichbar|
-|System getestet| Anwendbare Szenarien wurden abgebildet|
-|Dokumentation vollständig| Geänderte Aspekte und Hinweise ausreichend dokumentiert|
-|User Story erfolgreich abgebildet| Akzeptanzkriterien erfüllt|
+| Qualitätskriterien |
+|---|
+|Es werden keine Fehler oder Warnungen gemeldet|
+|Alle Services sind erreichbar|
+|Das gesamte System wurde getestet|
+|Die Dokumentation ist vollständig|
+|Die User Stories wurden vollständig abgeschlossen|
 
 # User Stories
 
