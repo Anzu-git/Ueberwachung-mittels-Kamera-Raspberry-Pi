@@ -61,6 +61,8 @@ Mittels Attentios Kameraüberwachung-Erweiterung wird die Abdeckung des Sicherhe
 | Dashboardübersicht | IT-Administratorin Sarah Klein (Übersichtlichkeit), Wachmann Markus Becker (Auf einen Blick wichtiges erkennen) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
 | Live-Feed der Kamera einsehen | Wachmann Markus Becker (damit Reaktionszeit bei potentiellem Alarm geringer ist) | ✔️ behalten ☐ ändern ☐ teilen ☐ streichen |
 | Einfaches Setup des Add-Ons & Kompatibilität | Sicherheitstechniker Thomas Wagner (Einfache Konfiguration), Geschäftsführer (Kein zusätzlicher Aufwand für Mitarbeiter) | ☐ behalten  ✔️ ändern bzw. wurde hinzugefügt ☐ teilen ☐ streichen |
+| Zeitplanhinterlegung & Wartungsfenster | Sicherheitstechniker Thomas Wagner (Einfache Konfiguration), Tobias Stein (keine Unabsichtliche Auslösung von Alarmen) | ☐ behalten  ✔️ ändern bzw. wurde hinzugefügt ☐ teilen ☐ streichen |
+| Automatischer Funktionsnachweis | Geschäftsführer (Regelmäßige Mitteilung ob das Produkt relevant für ihn ist) | ☐ behalten  ✔️ ändern bzw. wurde hinzugefügt ☐ teilen ☐ streichen |
 
 # User Stories
 
