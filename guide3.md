@@ -67,3 +67,29 @@ Sarah Klein prüft die Konfiguration, bevor sie die Freigabe erteilt. In der Dok
 Markus Becker beginnt seine Nachtschicht und öffnet das Dashboard. Der Systemstatus ist ohne Scrollen sichtbar. Für jede der vier Kameras wird angezeigt, ob sie online oder offline ist oder einen Fehler hat. Um 2:14 Uhr meldet die Kamera im Gefahrstofflager für Lacke und Lösungsmittel eine Bewegung. Der Alarm erscheint rot markiert ganz oben in der Liste, ohne dass Markus die Seite neu laden muss. Mit einem Klick auf die Alarmmeldung gelangt er zum Live-Feed, und das Video startet nach etwa 8 Sekunden. Markus sieht, dass es nur Jan Vogel ist, der Wartungstechniker, der eine Leiter trägt. Jan wird dabei nicht als identifizierbare Person gespeichert, denn das System speichert keine Gesichter und unterscheidet nicht zwischen bekannten und unbekannten Personen. Markus schließt den Alarm als unkritisch ab.
 Am nächsten Morgen arbeitet Jan Vogel an den Deckenlampen. Er weiß, dass er auf der Kamera erkennbar ist, aber nicht identifizierbar erfasst wird. Die Ereignisse enthalten keine Angaben, die ihn als Person ausweisen. Deshalb muss er sich weder abmelden noch Sondergenehmigungen einholen.
 Zwei Stellen habe ich bewusst offen gelassen, weil sie weder im Original noch im Szenario stehen: in welchem Bereich Jan an den Deckenlampen arbeitet und welche Rollen Thomas, Sarah und Peter bei Kessler haben.
+
+
+## Tasks
+**US-3.2.1:**
+⚬	Farb-Statuslogik der Kacheln umsetzen 
+⚬	Echtzeitaktualisierung implementieren
+⚬	Barrierefreie Darstellung
+
+**US-7.1.1:**
+⚬	Monatsbereicht autom. erstellen & exportieren
+⚬	Daten für Monatsbericht erfassen & integrieren
+
+**US-1.1.2:**
+⚬	Autom. Setzen Kamerastatus bei Bildverlust
+⚬	Zustandsfolge bei Ausfall umsetzen
+⚬	Automatischen Reconnect implementieren
+
+**US-5.1.1:**
+⚬	Formular für Wartungseinsätze erstellen
+⚬	Pausierung Alarmfunktion im Wartungsfenster 
+⚬	Rückkehr zur normalen Überwachung berücksichtigen 
+
+**US-5.2.1:**
+⚬	Feste Eingaben für Zeitbereiche ermöglichen
+⚬	Feiertage als Ausnahme, Alarme aktiv setzen
+⚬	Pot. Überschneidungen melden
