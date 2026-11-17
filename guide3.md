@@ -70,26 +70,77 @@ Zwei Stellen habe ich bewusst offen gelassen, weil sie weder im Original noch im
 
 
 ## Tasks
-**US-3.2.1:**
-⚬	Farb-Statuslogik der Kacheln umsetzen 
-⚬	Echtzeitaktualisierung implementieren
-⚬	Barrierefreie Darstellung
 
-**US-7.1.1:**
-⚬	Monatsbereicht autom. erstellen & exportieren
-⚬	Daten für Monatsbericht erfassen & integrieren
+**US-1.1.1:**
+⚬ Hailo-8L-Modell zur Personenerkennung einbinden
+⚬ Erkennung im Live-Bild mit Rahmen markieren
+⚬ Erkennungstest (50 Durchgänge) & Leerraum-Test durchführen
 
 **US-1.1.2:**
-⚬	Autom. Setzen Kamerastatus bei Bildverlust
-⚬	Zustandsfolge bei Ausfall umsetzen
-⚬	Automatischen Reconnect implementieren
+⚬ Autom. Setzen Kamerastatus bei Bildverlust
+⚬ Zustandsfolge bei Ausfall umsetzen
+⚬ Automatischen Reconnect implementieren
+
+**US-1.2.1:**
+⚬ Erlaubte Ausgabewerte festlegen & Tracking-Daten filtern
+⚬ Prüfen, dass keine Bilder/IDs gespeichert werden
+⚬ Kapitel Datenschutz in Systemdokumentation verfassen
+
+**US-1.3.1:**
+⚬ Vorlage Hinweisschild nach Art. 13 DSGVO erstellen
+⚬ Datenschutzinformation in einfacher Sprache verfassen
+⚬ QR-Code erzeugen & auf Schild einbinden
+
+**US-2.1.1:**
+⚬ Datenbankschema (Messwerte & Ereignisse) anlegen
+⚬ Ereignislogik (Beginn, Ende, Dauer) umsetzen
+⚬ Lokalen Puffer bei DB-Ausfall implementieren
+
+**US-2.2.1:**
+⚬ OPC-UA-Server mit Knoten aufsetzen
+⚬ Verschlüsselung & Benutzer-Login konfigurieren
+⚬ Verbindungstest mit Standard-Client (UaExpert)
+
+**US-3.1.1:**
+⚬ Systemwerte des Pi auslesen (CPU, RAM, Temperatur, Speicher)
+⚬ Hailo-Status abfragen
+⚬ Anzeige mit Schwellwert-Hervorhebung umsetzen
+
+**US-3.2.1:**
+⚬ Farb-Statuslogik der Kacheln umsetzen
+⚬ Echtzeitaktualisierung implementieren
+⚬ Barrierefreie Darstellung
+
+**US-3.3.1:**
+⚬ Sortierlogik nach Status & Zeitpunkt umsetzen
+⚬ Animierte Umsortierung implementieren
+⚬ Anpinnen von Kameras ermöglichen
+
+**US-4.1.1:**
+⚬ Alarmton mit Wiederholung bis Quittierung umsetzen
+⚬ Alarmmeldung im Dashboard anzeigen
+⚬ Stummschaltung (max. 5 Min.) & Wartungsfenster berücksichtigen
 
 **US-5.1.1:**
-⚬	Formular für Wartungseinsätze erstellen
-⚬	Pausierung Alarmfunktion im Wartungsfenster 
-⚬	Rückkehr zur normalen Überwachung berücksichtigen 
+⚬ Formular für Wartungseinsätze erstellen
+⚬ Pausierung Alarmfunktion im Wartungsfenster
+⚬ Rückkehr zur normalen Überwachung berücksichtigen
 
 **US-5.2.1:**
-⚬	Feste Eingaben für Zeitbereiche ermöglichen
-⚬	Feiertage als Ausnahme, Alarme aktiv setzen
-⚬	Pot. Überschneidungen melden
+⚬ Feste Eingaben für Zeitbereiche ermöglichen
+⚬ Feiertage als Ausnahme, Alarme aktiv setzen
+⚬ Pot. Überschneidungen melden
+
+**US-6.1.1:**
+⚬ RTSP-Stream (H.264) einbinden
+⚬ Kompatibilitätsprüfung mit verständlicher Fehlermeldung
+⚬ Kompatibilitätsliste getesteter Kameras dokumentieren
+
+**US-6.2.1:**
+⚬ Anmeldung & Rollenmodell umsetzen
+⚬ Rechte pro Rolle im Dashboard prüfen
+⚬ Protokollierung & Kontosperre bei Fehleingaben
+
+**US-7.1.1:**
+⚬ Monatsbericht autom. erstellen & exportieren
+⚬ Daten für Monatsbericht erfassen & integrieren
